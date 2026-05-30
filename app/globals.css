@@ -79,6 +79,74 @@ body {
   line-height: 1.85;
 }
 
+/* ── 웰니스 가이드 글: 프리미엄 아티클 타이포그래피 ── */
+.article-body {
+  font-size: 1.0625rem;
+  line-height: 1.9;
+  color: var(--color-forest-700);
+  letter-spacing: -0.003em;
+}
+.article-body > section + section {
+  margin-top: 2.75rem;
+}
+.article-body p + p {
+  margin-top: 1.15rem;
+}
+/* H2: 골드 세로 악센트 + 또렷한 위계 */
+.article-body h2 {
+  position: relative;
+  margin-bottom: 1.1rem;
+  padding-left: 1rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.35;
+  letter-spacing: -0.02em;
+  color: var(--color-forest-900);
+  scroll-margin-top: 5.5rem;
+}
+.article-body h2::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.2em;
+  bottom: 0.2em;
+  width: 4px;
+  border-radius: 9999px;
+  background: linear-gradient(to bottom, var(--color-gold-400), var(--color-gold-500));
+}
+/* 첫 문단 드롭캡 */
+.article-body > section:first-of-type > p:first-of-type::first-letter {
+  float: left;
+  margin: 0.02em 0.12em 0 0;
+  padding-right: 0.04em;
+  font-size: 3.1rem;
+  font-weight: 800;
+  line-height: 0.86;
+  color: var(--color-forest-700);
+}
+
+/* 읽기 진행 바 (상단 골드 라인) */
+.reading-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 100%;
+  transform-origin: 0 50%;
+  transform: scaleX(var(--progress, 0));
+  background: linear-gradient(to right, var(--color-gold-400), var(--color-mint-400));
+  z-index: 60;
+  will-change: transform;
+}
+
+/* 아티클 히어로 위 은은한 텍스처(골드/민트 글로우) */
+.article-hero-bg {
+  background:
+    radial-gradient(680px 320px at 88% -20%, rgba(201, 161, 74, 0.20), transparent 60%),
+    radial-gradient(560px 300px at -5% 120%, rgba(79, 168, 136, 0.14), transparent 55%),
+    linear-gradient(160deg, #1d322b 0%, #233d33 55%, #2a4c3e 100%);
+}
+
 /* 모션 최소화 선호 사용자 배려 */
 @media (prefers-reduced-motion: reduce) {
   html {
