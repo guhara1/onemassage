@@ -56,6 +56,29 @@ body {
   outline-offset: 2px;
 }
 
+/* 프리미엄 디자인 유틸리티 */
+.shadow-premium {
+  box-shadow:
+    0 1px 2px rgba(29, 50, 43, 0.04),
+    0 12px 32px -12px rgba(29, 50, 43, 0.18);
+}
+.shadow-premium-lg {
+  box-shadow:
+    0 1px 2px rgba(29, 50, 43, 0.05),
+    0 24px 60px -20px rgba(29, 50, 43, 0.28);
+}
+/* 딥그린 히어로 배경 + 골드 글로우 */
+.area-hero-bg {
+  background:
+    radial-gradient(900px 420px at 85% -10%, rgba(201, 161, 74, 0.22), transparent 60%),
+    radial-gradient(700px 360px at 0% 110%, rgba(79, 168, 136, 0.16), transparent 55%),
+    linear-gradient(135deg, #1d322b 0%, #233d33 45%, #2a4c3e 100%);
+}
+/* 본문 가독성: 단락 간격·줄높이 */
+.guide-prose p {
+  line-height: 1.85;
+}
+
 /* 모션 최소화 선호 사용자 배려 */
 @media (prefers-reduced-motion: reduce) {
   html {

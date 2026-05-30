@@ -5,8 +5,22 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { FAQAccordion } from "@/components/FAQAccordion";
 import { CTASection } from "@/components/CTASection";
 import { ReviewCard } from "@/components/ReviewCard";
-import { PageHero, Section, Container, Card, SectionTitle } from "@/components/ui";
+import { Section, Container, SectionTitle } from "@/components/ui";
 import { JsonLd } from "@/components/JsonLd";
+import {
+  ArrowIcon,
+  CalendarIcon,
+  CarIcon,
+  CheckIcon,
+  ClockIcon,
+  GridIcon,
+  PinIcon,
+  ReceiptIcon,
+  ShieldIcon,
+  SparkleIcon,
+  StarIcon,
+  UserCheckIcon,
+} from "@/components/icons";
 import { areas, getArea } from "@/data/areas";
 import { getService } from "@/data/services";
 import { reviews } from "@/data/reviews";
@@ -33,6 +47,15 @@ export async function generateMetadata({
   });
 }
 
+const internalLinks = [
+  { href: "/pricing", label: "출장마사지 요금 안내", icon: ReceiptIcon },
+  { href: "/booking", label: "예약 진행 방법", icon: CalendarIcon },
+  { href: "/trust/safety-hygiene", label: "위생·안전 정책", icon: ShieldIcon },
+  { href: "/trust/therapist-standards", label: "테라피스트 검증 기준", icon: UserCheckIcon },
+  { href: "/reviews", label: "실제 고객 후기", icon: StarIcon },
+  { href: "/services", label: "전체 서비스 보기", icon: GridIcon },
+];
+
 export default async function AreaDetailPage({
   params,
 }: {
@@ -47,6 +70,12 @@ export default async function AreaDetailPage({
     .map((s) => getService(s))
     .filter((s): s is NonNullable<typeof s> => Boolean(s));
   const areaReviews = reviews.filter((r) => r.area === area.name);
+
+  const stats = [
+    { icon: ClockIcon, label: "평균 도착", value: area.arrivalTime },
+    { icon: CalendarIcon, label: "예약 가능", value: area.availableHours },
+    { icon: CarIcon, label: "지역별 출장비", value: area.travelFee },
+  ];
 
   return (
     <>
@@ -67,155 +96,246 @@ export default async function AreaDetailPage({
           faqSchema(area.faqs),
         ]}
       />
-      <PageHero eyebrow="지역안내" title={area.h1} description={area.label} />
-      <Container className="pt-6">
-        <Breadcrumbs
-          items={[
-            { name: "지역안내", href: "/areas" },
-            { name: area.name, href: `/areas/${area.slug}` },
-          ]}
-        />
+
+      {/* ── 프리미엄 히어로 ───────────────────────────── */}
+      <section className="area-hero-bg relative overflow-hidden">
+        <Container className="relative py-14 md:py-20">
+          <div className="flex items-center gap-2 text-sm text-forest-100/80">
+            <Link href="/" className="hover:text-white">홈</Link>
+            <span aria-hidden="true">/</span>
+            <Link href="/areas" className="hover:text-white">지역안내</Link>
+            <span aria-hidden="true">/</span>
+            <span className="text-white">{area.name}</span>
+          </div>
+
+          <div className="mt-6 max-w-3xl">
+            <span className="inline-flex items-center gap-1.5 rounded-full border border-gold-400/40 bg-gold-400/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-gold-400">
+              <PinIcon width={14} height={14} />
+              {area.name} 지역 출장마사지
+            </span>
+            <h1 className="mt-4 text-3xl font-bold leading-tight tracking-tight text-white md:text-5xl">
+              {area.h1}
+            </h1>
+            <p className="mt-4 max-w-2xl text-base leading-relaxed text-forest-100/90 md:text-lg">
+              {area.intro}
+            </p>
+
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Link
+                href="/booking"
+                className="inline-flex items-center gap-2 rounded-xl bg-gold-400 px-6 py-3 text-sm font-bold text-forest-950 shadow-premium transition-transform hover:-translate-y-0.5"
+              >
+                {area.name} 방문 예약하기
+                <ArrowIcon width={18} height={18} />
+              </Link>
+              <Link
+                href="/pricing"
+                className="inline-flex items-center gap-2 rounded-xl border border-white/30 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/10"
+              >
+                요금 확인하기
+              </Link>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* ── 플로팅 통계 스트립 ───────────────────────── */}
+      <Container className="relative z-10 -mt-8 md:-mt-10">
+        <div className="grid gap-px overflow-hidden rounded-2xl bg-forest-100 shadow-premium-lg sm:grid-cols-3">
+          {stats.map((s) => (
+            <div key={s.label} className="flex gap-3 bg-white p-5">
+              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-forest-50 text-forest-700">
+                <s.icon width={20} height={20} />
+              </span>
+              <div className="min-w-0">
+                <p className="text-xs font-semibold uppercase tracking-wide text-forest-500">
+                  {s.label}
+                </p>
+                <p className="mt-1 text-sm leading-snug text-forest-800">{s.value}</p>
+              </div>
+            </div>
+          ))}
+        </div>
       </Container>
 
-      <Section className="pt-8">
-        <div className="grid gap-8 lg:grid-cols-3">
+      <Section className="pt-10 md:pt-14">
+        <div className="grid gap-10 lg:grid-cols-3">
+          {/* ── 본문 ─────────────────────────────────── */}
           <div className="lg:col-span-2">
-            <p className="text-base leading-relaxed text-forest-700">{area.intro}</p>
-
-            <div className="mt-8 grid gap-5 sm:grid-cols-2">
-              <Card>
-                <h2 className="text-base font-semibold text-forest-900">평균 도착 가능 시간</h2>
-                <p className="mt-2 text-sm text-forest-600">{area.arrivalTime}</p>
-              </Card>
-              <Card>
-                <h2 className="text-base font-semibold text-forest-900">예약 가능 시간</h2>
-                <p className="mt-2 text-sm text-forest-600">{area.availableHours}</p>
-              </Card>
+            {/* 방문 가능 구역 */}
+            <div className="rounded-2xl border border-forest-100 bg-white p-6 shadow-premium">
+              <div className="flex items-center gap-2">
+                <PinIcon width={20} height={20} className="text-forest-600" />
+                <h2 className="text-base font-bold text-forest-900">주요 방문 가능 구역</h2>
+              </div>
+              <div className="mt-4 flex flex-wrap gap-2">
+                {area.zones.map((z) => (
+                  <span
+                    key={z}
+                    className="inline-flex items-center gap-1.5 rounded-full border border-forest-100 bg-forest-50 px-3.5 py-1.5 text-sm font-medium text-forest-700"
+                  >
+                    <span className="h-1.5 w-1.5 rounded-full bg-gold-400" />
+                    {z}
+                  </span>
+                ))}
+              </div>
             </div>
 
-            <div className="mt-5">
-              <Card>
-                <h2 className="text-base font-semibold text-forest-900">주요 방문 가능 구역</h2>
-                <div className="mt-3 flex flex-wrap gap-2">
-                  {area.zones.map((z) => (
-                    <span key={z} className="rounded-full bg-forest-50 px-3 py-1 text-sm text-forest-700">
-                      {z}
-                    </span>
-                  ))}
-                </div>
-              </Card>
-            </div>
-
-            <div className="mt-5">
-              <Card>
-                <h2 className="text-base font-semibold text-forest-900">
+            {/* 건물 유의사항 */}
+            <div className="mt-6 rounded-2xl border border-forest-100 bg-white p-6 shadow-premium">
+              <div className="flex items-center gap-2">
+                <ShieldIcon width={20} height={20} className="text-forest-600" />
+                <h2 className="text-base font-bold text-forest-900">
                   주차·아파트·오피스텔 방문 시 유의사항
                 </h2>
-                <ul className="mt-3 space-y-2">
-                  {area.buildingNotes.map((n) => (
-                    <li key={n} className="flex items-start gap-3 text-sm text-forest-700">
-                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" className="mt-0.5 shrink-0 text-forest-500" aria-hidden="true">
-                        <circle cx="12" cy="12" r="3" fill="currentColor" />
-                      </svg>
-                      {n}
-                    </li>
-                  ))}
-                </ul>
-              </Card>
+              </div>
+              <ul className="mt-4 space-y-3">
+                {area.buildingNotes.map((n) => (
+                  <li key={n} className="flex items-start gap-3 text-sm leading-relaxed text-forest-700">
+                    <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-mint-400/15 text-mint-500">
+                      <CheckIcon width={13} height={13} />
+                    </span>
+                    {n}
+                  </li>
+                ))}
+              </ul>
             </div>
 
-            <div className="mt-5">
-              <Card>
-                <h2 className="text-base font-semibold text-forest-900">지역별 출장비</h2>
-                <p className="mt-2 text-sm leading-relaxed text-forest-600">{area.travelFee}</p>
-              </Card>
-            </div>
-
+            {/* 지역 이용 가이드 (번호 + 골드 보더) */}
             {area.guide && area.guide.length > 0 && (
-              <div className="mt-10 space-y-8">
-                {area.guide.map((section) => (
-                  <section key={section.heading}>
-                    <h2 className="text-xl font-bold text-forest-900">{section.heading}</h2>
-                    {section.body?.map((p, i) => (
-                      <p key={i} className="mt-3 leading-relaxed text-forest-700">
-                        {p}
-                      </p>
-                    ))}
-                    {section.subsections?.map((sub) => (
-                      <div key={sub.heading} className="mt-4">
-                        <h3 className="text-base font-semibold text-forest-800">{sub.heading}</h3>
-                        {sub.body.map((p, i) => (
-                          <p key={i} className="mt-2 leading-relaxed text-forest-700">
+              <div className="mt-10">
+                <div className="mb-6 flex items-center gap-2">
+                  <SparkleIcon width={22} height={22} className="text-gold-500" />
+                  <h2 className="text-2xl font-bold tracking-tight text-forest-900">
+                    {area.name} 출장마사지 이용 가이드
+                  </h2>
+                </div>
+                <div className="space-y-5">
+                  {area.guide.map((section, idx) => (
+                    <section
+                      key={section.heading}
+                      className="guide-prose rounded-2xl border border-forest-100 bg-white p-6 shadow-premium md:p-7"
+                    >
+                      <div className="flex items-start gap-4">
+                        <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-forest-700 text-sm font-bold text-white">
+                          {String(idx + 1).padStart(2, "0")}
+                        </span>
+                        <h3 className="pt-1 text-lg font-bold text-forest-900 md:text-xl">
+                          {section.heading}
+                        </h3>
+                      </div>
+                      <div className="mt-4 border-l-2 border-gold-400/50 pl-4 md:pl-5">
+                        {section.body?.map((p, i) => (
+                          <p key={i} className="mt-3 text-[15px] text-forest-700 first:mt-0">
                             {p}
                           </p>
                         ))}
+                        {section.subsections?.map((sub) => (
+                          <div key={sub.heading} className="mt-5">
+                            <h4 className="flex items-center gap-2 text-base font-semibold text-forest-800">
+                              <span className="h-1.5 w-1.5 rounded-full bg-gold-400" />
+                              {sub.heading}
+                            </h4>
+                            {sub.body.map((p, i) => (
+                              <p key={i} className="mt-2 text-[15px] text-forest-700">
+                                {p}
+                              </p>
+                            ))}
+                          </div>
+                        ))}
                       </div>
-                    ))}
-                  </section>
-                ))}
+                    </section>
+                  ))}
+                </div>
               </div>
             )}
 
+            {/* FAQ */}
             <div className="mt-10">
               <SectionTitle title={`${area.name} 지역 FAQ`} />
               <FAQAccordion items={area.faqs} />
             </div>
 
-            <div className="mt-8">
-              <Card>
-                <h2 className="text-base font-semibold text-forest-900">함께 확인하면 좋은 안내</h2>
-                <div className="mt-3 grid gap-2 sm:grid-cols-2">
-                  {[
-                    { href: "/pricing", label: "출장마사지 요금 안내" },
-                    { href: "/booking", label: "예약 진행 방법" },
-                    { href: "/trust/safety-hygiene", label: "위생·안전 정책" },
-                    { href: "/trust/therapist-standards", label: "테라피스트 검증 기준" },
-                    { href: "/reviews", label: "실제 고객 후기" },
-                    { href: "/services", label: "전체 서비스 보기" },
-                  ].map((l) => (
-                    <Link
-                      key={l.href}
-                      href={l.href}
-                      className="flex items-center justify-between rounded-lg border border-forest-100 px-3 py-2.5 text-sm text-forest-800 transition-colors hover:bg-forest-50"
-                    >
-                      {l.label}
-                      <span aria-hidden="true">→</span>
-                    </Link>
-                  ))}
-                </div>
-              </Card>
+            {/* 내부 링크 타일 */}
+            <div className="mt-8 rounded-2xl border border-forest-100 bg-gradient-to-br from-forest-50 to-white p-6 shadow-premium">
+              <h2 className="text-base font-bold text-forest-900">함께 확인하면 좋은 안내</h2>
+              <div className="mt-4 grid gap-3 sm:grid-cols-2">
+                {internalLinks.map((l) => (
+                  <Link
+                    key={l.href}
+                    href={l.href}
+                    className="group flex items-center gap-3 rounded-xl border border-forest-100 bg-white px-4 py-3 text-sm font-medium text-forest-800 shadow-sm transition-all hover:-translate-y-0.5 hover:border-forest-300 hover:shadow-premium"
+                  >
+                    <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-forest-50 text-forest-700 transition-colors group-hover:bg-forest-700 group-hover:text-white">
+                      <l.icon width={18} height={18} />
+                    </span>
+                    <span className="flex-1">{l.label}</span>
+                    <ArrowIcon
+                      width={16}
+                      height={16}
+                      className="text-forest-300 transition-transform group-hover:translate-x-0.5 group-hover:text-forest-600"
+                    />
+                  </Link>
+                ))}
+              </div>
             </div>
           </div>
 
-          <aside className="space-y-4 lg:sticky lg:top-20 lg:self-start">
-            <Card>
-              <h2 className="text-base font-semibold text-forest-900">
-                {area.name}에서 많이 선택하는 서비스
-              </h2>
-              <ul className="mt-3 space-y-2">
-                {popular.map((s) => (
-                  <li key={s.slug}>
-                    <Link
-                      href={`/services/${s.slug}`}
-                      className="flex items-center justify-between rounded-lg border border-forest-100 px-3 py-2.5 text-sm text-forest-800 transition-colors hover:bg-forest-50"
-                    >
-                      {s.name}
-                      <span aria-hidden="true">→</span>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-              <Link
-                href="/booking"
-                className="mt-4 block rounded-lg bg-forest-700 px-4 py-2.5 text-center text-sm font-semibold text-white transition-colors hover:bg-forest-800"
-              >
-                {area.name} 방문 예약하기
-              </Link>
-            </Card>
+          {/* ── 스티키 사이드바 ───────────────────────── */}
+          <aside className="lg:sticky lg:top-24 lg:self-start">
+            <div className="overflow-hidden rounded-2xl border border-forest-100 bg-white shadow-premium-lg">
+              <div className="area-hero-bg p-6">
+                <p className="text-xs font-semibold uppercase tracking-wide text-gold-400">
+                  지금 예약하기
+                </p>
+                <p className="mt-2 text-lg font-bold leading-snug text-white">
+                  {area.name}에서 가능한
+                  <br />
+                  방문 시간을 확인하세요
+                </p>
+                <Link
+                  href="/booking"
+                  className="mt-5 flex items-center justify-center gap-2 rounded-xl bg-gold-400 px-4 py-3 text-sm font-bold text-forest-950 transition-transform hover:-translate-y-0.5"
+                >
+                  {area.name} 방문 예약하기
+                  <ArrowIcon width={18} height={18} />
+                </Link>
+              </div>
+
+              <div className="p-6">
+                <div className="flex items-center gap-2">
+                  <SparkleIcon width={18} height={18} className="text-gold-500" />
+                  <h2 className="text-sm font-bold text-forest-900">
+                    {area.name}에서 많이 선택하는 케어
+                  </h2>
+                </div>
+                <ul className="mt-4 space-y-2.5">
+                  {popular.map((s, i) => (
+                    <li key={s.slug}>
+                      <Link
+                        href={`/services/${s.slug}`}
+                        className="group flex items-center gap-3 rounded-xl border border-forest-100 px-3 py-2.5 text-sm transition-all hover:border-forest-300 hover:bg-forest-50"
+                      >
+                        <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-gold-400/15 text-xs font-bold text-gold-500">
+                          {i + 1}
+                        </span>
+                        <span className="flex-1 font-medium text-forest-800">{s.name}</span>
+                        <ArrowIcon
+                          width={15}
+                          height={15}
+                          className="text-forest-300 transition-transform group-hover:translate-x-0.5"
+                        />
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
           </aside>
         </div>
       </Section>
 
+      {/* ── 후기 ─────────────────────────────────────── */}
       {areaReviews.length > 0 && (
         <Section className="bg-forest-50/60 pt-0">
           <SectionTitle title={`${area.name} 고객 후기`} description="실제 이용 고객의 후기입니다." />
