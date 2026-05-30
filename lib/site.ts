@@ -12,9 +12,9 @@ export const siteConfig = {
   // 배포 시 실제 도메인으로 교체하세요.
   url: "https://onemassage.example.com",
   locale: "ko_KR",
-  // 연락처 (실제 운영 정보로 교체하세요)
-  phone: "1600-0000",
-  phoneHref: "tel:1600-0000",
+  // 연락처
+  phone: "0508-202-4743",
+  phoneHref: "tel:0508-202-4743",
   kakao: "https://pf.kakao.com/_onemassage",
   email: "help@onemassage.example.com",
   hours: "매일 10:00 ~ 02:00 (예약제 운영)",

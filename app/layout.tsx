@@ -44,6 +44,7 @@ export default function RootLayout({
         </main>
         <Footer />
         <MobileBar />
+        <PhoneFab />
       </body>
     </html>
   );

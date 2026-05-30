@@ -2,7 +2,7 @@ import { siteConfig } from "@/lib/site";
 
 /**
  * 모바일 전용 전화 연결 플로팅 버튼.
- * 화면 우측 하단(푸터 영역 위)에 고정되며, 수화기 아이콘이 흔들리고
+ * 화면 우측 하단(모바일 하단 바 바로 위)에 고정되며, 수화기 아이콘이 흔들리고
  * 뒤로 펄스 링이 퍼져 시선을 끈다. 데스크톱(lg 이상)에서는 헤더의
  * 전화 상담 버튼이 있으므로 숨긴다.
  */
@@ -11,7 +11,7 @@ export function PhoneFab() {
     <a
       href={siteConfig.phoneHref}
       aria-label={`전화 예약 ${siteConfig.phone}`}
-      className="fixed bottom-5 right-5 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-forest-700 text-white shadow-premium-lg ring-2 ring-white/70 transition-transform active:scale-95 lg:hidden"
+      className="fixed bottom-20 right-4 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-forest-700 text-white shadow-premium-lg ring-2 ring-white/70 transition-transform active:scale-95 lg:hidden"
     >
       {/* 펄스 링 */}
       <span
