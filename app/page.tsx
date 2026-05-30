@@ -19,7 +19,7 @@ import { localBusinessSchema } from "@/lib/schema";
 export const metadata: Metadata = buildMetadata({
   title: "출장마사지 예약 | 전문 테라피스트 웰니스 홈케어",
   description:
-    "검증된 전문 테라피스트가 고객님의 공간으로 방문하는 합법 웰니스 마사지 서비스입니다. 요금, 지역, 위생 정책, 예약 절차를 투명하게 안내합니다.",
+    "강남·수원·인천·용인·부산·성남 예약제 출장마사지. 검증된 전문 테라피스트가 방문하는 합법 웰니스 홈케어입니다.",
   path: "/",
 });
 
