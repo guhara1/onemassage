@@ -21,6 +21,24 @@ import { hygienicVisitMassageStandards } from "./hygienic-visit-massage-standard
 import { howToIdentifyLegalVisitMassage } from "./how-to-identify-legal-visit-massage";
 import { firstTimeVisitMassageGuide } from "./first-time-visit-massage-guide";
 
+// 지역 매거진 (지역별 2편)
+import { gangnamOfficeWorkerNightCare } from "./gangnam-office-worker-night-care";
+import { gangnamOfficetelVisitCareGuide } from "./gangnam-officetel-visit-care-guide";
+import { songpaFamilyHomeCareGuide } from "./songpa-family-home-care-guide";
+import { songpaApartmentDeskFatigueCare } from "./songpa-apartment-desk-fatigue-care";
+import { mapoMediaWorkerFatigueCare } from "./mapo-media-worker-fatigue-care";
+import { mapoOnePersonHouseholdCare } from "./mapo-one-person-household-care";
+import { suwonNewTownFamilyCare } from "./suwon-new-town-family-care";
+import { suwonItWorkerCommuteFatigue } from "./suwon-it-worker-commute-fatigue";
+import { yonginSujiFamilyWellness } from "./yongin-suji-family-wellness";
+import { yonginLongCommuteFatigueCare } from "./yongin-long-commute-fatigue-care";
+import { seongnamPangyoItNightCare } from "./seongnam-pangyo-it-night-care";
+import { seongnamBundangFamilyCareGuide } from "./seongnam-bundang-family-care-guide";
+import { incheonSongdoNewCityCare } from "./incheon-songdo-new-city-care";
+import { incheonAirportBusinessTripCare } from "./incheon-airport-business-trip-care";
+import { busanHaeundaeHotelCareGuide } from "./busan-haeundae-hotel-care-guide";
+import { busanSeomyeonWorkerFatigueCare } from "./busan-seomyeon-worker-fatigue-care";
+
 export type { Post, PostSection, PostFaq } from "./_types";
 
 export const posts: Post[] = [
@@ -44,6 +62,23 @@ export const posts: Post[] = [
   hygienicVisitMassageStandards,
   howToIdentifyLegalVisitMassage,
   firstTimeVisitMassageGuide,
+  // 지역 매거진
+  gangnamOfficeWorkerNightCare,
+  gangnamOfficetelVisitCareGuide,
+  songpaFamilyHomeCareGuide,
+  songpaApartmentDeskFatigueCare,
+  mapoMediaWorkerFatigueCare,
+  mapoOnePersonHouseholdCare,
+  suwonNewTownFamilyCare,
+  suwonItWorkerCommuteFatigue,
+  yonginSujiFamilyWellness,
+  yonginLongCommuteFatigueCare,
+  seongnamPangyoItNightCare,
+  seongnamBundangFamilyCareGuide,
+  incheonSongdoNewCityCare,
+  incheonAirportBusinessTripCare,
+  busanHaeundaeHotelCareGuide,
+  busanSeomyeonWorkerFatigueCare,
 ];
 
 export function getPost(slug: string): Post | undefined {
