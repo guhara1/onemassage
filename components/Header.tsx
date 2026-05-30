@@ -1,13 +1,22 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import { mainNav } from "@/lib/nav";
 import { siteConfig } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
 export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [openMenu, setOpenMenu] = useState<string | null>(null);
+  const pathname = usePathname();
+
+  // 라우트가 바뀌면 모든 메뉴를 닫는다 (클릭 후 드롭다운이 남는 문제 방지)
+  useEffect(() => {
+    setOpenMenu(null);
+    setMobileOpen(false);
+  }, [pathname]);
 
   return (
     <header className="sticky top-0 z-50 border-b border-forest-100 bg-white/95 backdrop-blur">
@@ -22,16 +31,32 @@ export function Header() {
 
         {/* 데스크톱 메뉴 */}
         <nav className="hidden lg:flex lg:items-center lg:gap-1" aria-label="주요 메뉴">
-          {mainNav.map((item) => (
-            <div key={item.label} className="group relative">
-              <Link
-                href={item.href}
-                className="inline-flex items-center rounded-md px-3 py-2 text-sm font-medium text-forest-800 transition-colors hover:bg-forest-50 hover:text-forest-900"
+          {mainNav.map((item) => {
+            const hasDropdown = Boolean(item.groups || item.children);
+            const isOpen = openMenu === item.label;
+            return (
+              <div
+                key={item.label}
+                className="relative"
+                onMouseEnter={() => hasDropdown && setOpenMenu(item.label)}
+                onMouseLeave={() => setOpenMenu(null)}
               >
-                {item.label}
-              </Link>
-              {(item.groups || item.children) && (
-                <div className="invisible absolute left-0 top-full z-50 rounded-xl border border-forest-100 bg-white p-3 opacity-0 shadow-lg transition-all group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+                <Link
+                  href={item.href}
+                  className="inline-flex items-center rounded-md px-3 py-2 text-sm font-medium text-forest-800 transition-colors hover:bg-forest-50 hover:text-forest-900"
+                  onClick={() => setOpenMenu(null)}
+                >
+                  {item.label}
+                </Link>
+                {hasDropdown && (
+                  <div
+                    className={cn(
+                      "absolute left-0 top-full z-50 rounded-xl border border-forest-100 bg-white p-3 shadow-lg transition-all",
+                      isOpen
+                        ? "visible translate-y-0 opacity-100"
+                        : "invisible -translate-y-1 opacity-0",
+                    )}
+                  >
                   {item.groups ? (
                     <>
                       <div className="flex gap-5">
@@ -45,6 +70,7 @@ export function Header() {
                                 key={child.href}
                                 href={child.href}
                                 className="block whitespace-nowrap rounded-lg px-3 py-2 text-sm text-forest-700 transition-colors hover:bg-forest-50"
+                                onClick={() => setOpenMenu(null)}
                               >
                                 {child.label}
                               </Link>
@@ -57,6 +83,7 @@ export function Header() {
                           key={child.href}
                           href={child.href}
                           className="mt-2 flex items-center justify-center gap-1 rounded-lg border-t border-forest-100 pt-3 text-sm font-semibold text-forest-700 transition-colors hover:text-forest-900"
+                          onClick={() => setOpenMenu(null)}
                         >
                           {child.label} →
                         </Link>
@@ -69,16 +96,18 @@ export function Header() {
                           key={child.href}
                           href={child.href}
                           className="block rounded-lg px-3 py-2 text-sm text-forest-700 transition-colors hover:bg-forest-50"
+                          onClick={() => setOpenMenu(null)}
                         >
                           {child.label}
                         </Link>
                       ))}
                     </div>
                   )}
-                </div>
-              )}
-            </div>
-          ))}
+                  </div>
+                )}
+              </div>
+            );
+          })}
         </nav>
 
         {/* 우측 CTA */}
