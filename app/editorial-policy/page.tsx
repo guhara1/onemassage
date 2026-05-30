@@ -6,7 +6,7 @@ import { buildMetadata } from "@/lib/metadata";
 export const metadata: Metadata = buildMetadata({
   title: "콘텐츠 작성 및 검수 정책 | 편집 정책",
   description:
-    "원마사지 콘텐츠의 작성 목적, AI 사용 공개 기준, 전문가 검수 기준, 출처 표기, 업데이트, 오류 제보, 광고·협찬 표기, 후기 검수 정책을 안내합니다.",
+    "원마사지 콘텐츠의 작성 목적, AI 사용 공개, 전문가 검수, 출처·업데이트·후기 검수 정책을 안내합니다.",
   path: "/editorial-policy",
 });
 

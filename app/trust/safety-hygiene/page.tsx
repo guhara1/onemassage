@@ -7,7 +7,7 @@ import { buildMetadata } from "@/lib/metadata";
 export const metadata: Metadata = buildMetadata({
   title: "위생·안전 정책 | 신뢰센터",
   description:
-    "손 위생, 도구 관리, 예약 정보 확인, 부적절한 요청 거절, 개인정보 보호, 긴급 상황 대응까지. 고객과 테라피스트를 보호하는 위생·안전 정책을 안내합니다.",
+    "손 위생, 도구 관리, 예약 확인, 부적절 요청 거절, 개인정보 보호까지 고객과 테라피스트를 지키는 안전 정책.",
   path: "/trust/safety-hygiene",
 });
 

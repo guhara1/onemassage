@@ -8,7 +8,7 @@ import { buildMetadata } from "@/lib/metadata";
 export const metadata: Metadata = buildMetadata({
   title: "출장마사지 요금 안내 | 시간별 가격과 출장비",
   description:
-    "출장마사지 요금을 60분·90분·120분 기준으로 투명하게 안내합니다. 심야 추가 비용, 지역별 출장비, 환불·취소 기준을 예약 전에 확인하세요.",
+    "출장마사지 요금을 60분·90분·120분 기준으로 안내합니다. 심야 추가비, 출장비, 환불 기준을 확인하세요.",
   path: "/pricing",
 });
 

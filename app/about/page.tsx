@@ -8,7 +8,7 @@ import { siteConfig } from "@/lib/site";
 export const metadata: Metadata = buildMetadata({
   title: "회사 소개 | 방문 웰니스 마사지 운영 원칙",
   description:
-    "원마사지는 합법성과 투명성을 최우선으로 운영하는 방문 웰니스 케어 서비스입니다. 운영 원칙, 사업자 정보, 고객·테라피스트 보호 원칙을 공개합니다.",
+    "합법성과 투명성을 최우선으로 운영하는 방문 웰니스 케어 서비스. 운영 원칙과 사업자 정보를 공개합니다.",
   path: "/about",
 });
 

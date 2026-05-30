@@ -16,8 +16,10 @@ export interface WellnessCategory {
   label: string;
   /** 허브 페이지 SEO 타이틀 */
   title: string;
-  /** 허브 페이지 소개 + 메타 설명 */
+  /** 허브 페이지 소개(본문) */
   description: string;
+  /** 검색엔진 메타 설명(80자 이내). 없으면 description 사용 */
+  metaDescription?: string;
 }
 
 /**
@@ -31,6 +33,8 @@ export const wellnessCategories: WellnessCategory[] = [
     title: "마사지 전후 관리",
     description:
       "마사지 전 준비와 마사지 후 관리 방법을 정리한 글 모음입니다. 수분 보충, 휴식, 컨디션 점검처럼 효과를 오래 유지하고 몸의 부담을 줄이는 생활 정보를 다룹니다.",
+    metaDescription:
+      "마사지 전후 준비와 관리 방법을 정리했습니다. 수분 보충, 휴식, 컨디션 점검으로 효과를 오래 유지하는 생활 정보를 안내합니다.",
   },
   {
     slug: "office-fatigue",
@@ -38,6 +42,8 @@ export const wellnessCategories: WellnessCategory[] = [
     title: "직장인 피로 관리",
     description:
       "장시간 앉아 일하는 직장인의 목·어깨·허리 피로와 자세 습관을 관리하는 정보 모음입니다. 야근, 통근, 재택근무 등 상황별로 일상에서 실천할 수 있는 방법을 안내합니다.",
+    metaDescription:
+      "장시간 앉아 일하는 직장인의 목·어깨·허리 피로와 자세 습관을 관리하는 정보. 상황별로 일상에서 실천할 방법을 안내합니다.",
   },
   {
     slug: "workout-recovery",
@@ -45,6 +51,8 @@ export const wellnessCategories: WellnessCategory[] = [
     title: "운동 후 회복",
     description:
       "운동 후 근육 회복과 마사지 활용법을 다루는 글 모음입니다. 회복에 도움이 되는 경우와 피해야 하는 경우를 구분해 안전하게 참고할 수 있도록 정리했습니다.",
+    metaDescription:
+      "운동 후 근육 회복과 마사지 활용법을 정리했습니다. 도움이 되는 경우와 피해야 할 경우를 구분해 안전하게 안내합니다.",
   },
   {
     slug: "sleep-rest",
@@ -52,6 +60,8 @@ export const wellnessCategories: WellnessCategory[] = [
     title: "수면과 휴식",
     description:
       "수면의 질과 휴식을 돕는 이완 정보 모음입니다. 잠들기 전 루틴과 긴장 완화 방법처럼 일상에서 가볍게 실천할 수 있는 내용을 다룹니다.",
+    metaDescription:
+      "수면의 질과 휴식을 돕는 이완 정보. 잠들기 전 루틴과 긴장 완화처럼 일상에서 가볍게 실천할 방법을 안내합니다.",
   },
   {
     slug: "service-guide",
@@ -59,6 +69,8 @@ export const wellnessCategories: WellnessCategory[] = [
     title: "출장마사지 이용 가이드",
     description:
       "출장마사지를 처음 이용하는 분을 위한 예약·준비·이용 절차 안내 모음입니다. 합법 업체 확인, 예약 변경, 위생 기준처럼 안전하고 합리적인 선택에 필요한 정보를 정리했습니다.",
+    metaDescription:
+      "출장마사지를 처음 이용하는 분을 위한 예약·준비·이용 절차 안내. 합법 업체 확인과 위생 기준까지 정리했습니다.",
   },
   {
     slug: "safety-guide",
@@ -66,6 +78,8 @@ export const wellnessCategories: WellnessCategory[] = [
     title: "서비스 안전 가이드",
     description:
       "안전하고 신뢰할 수 있는 서비스 이용을 위한 점검 기준 모음입니다. 예약 전 확인 사항, 합법 서비스 식별, 부적절한 요청 대응 등 이용자 보호에 초점을 맞췄습니다.",
+    metaDescription:
+      "안전하고 신뢰할 수 있는 서비스 이용을 위한 점검 기준. 예약 전 확인과 합법 서비스 식별 등 이용자 보호 정보를 안내합니다.",
   },
 ];
 

@@ -23,7 +23,7 @@ export async function generateMetadata({
   if (!author) return {};
   return buildMetadata({
     title: `${author.name} | ${author.role}`,
-    description: `${author.name} (${author.role})의 소개와 작성·검수한 글 목록입니다. ${author.bio}`,
+    description: `${author.name} ${author.role}의 소개와 작성·검수한 웰니스 가이드 글 목록입니다.`,
     path: `/authors/${author.slug}`,
   });
 }

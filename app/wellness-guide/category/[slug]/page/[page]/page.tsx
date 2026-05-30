@@ -37,7 +37,7 @@ export async function generateMetadata({
   if (!category) return {};
   return buildMetadata({
     title: `${category.title} (${page}페이지) | 웰니스 가이드`,
-    description: category.description,
+    description: category.metaDescription ?? category.description,
     path: `/wellness-guide/category/${category.slug}/page/${page}`,
   });
 }

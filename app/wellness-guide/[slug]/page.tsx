@@ -31,7 +31,7 @@ export async function generateMetadata({
   if (!post) return {};
   return buildMetadata({
     title: post.title,
-    description: post.summary,
+    description: post.metaDescription ?? post.summary,
     path: `/wellness-guide/${post.slug}`,
   });
 }

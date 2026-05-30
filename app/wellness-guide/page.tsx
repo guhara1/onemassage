@@ -14,7 +14,7 @@ import { siteConfig } from "@/lib/site";
 export const metadata: Metadata = buildMetadata({
   title: "웰니스 가이드 | 피로·근육·수면 관리 정보",
   description:
-    "출장마사지 이용 가이드와 직장인 피로 관리, 운동 후 회복, 수면·휴식 등 검수를 거친 웰니스 정보를 제공합니다. 작성자와 업데이트일을 함께 표기합니다.",
+    "출장마사지 이용 가이드와 직장인 피로, 운동 후 회복, 수면·휴식 등 검수를 거친 웰니스 정보를 제공합니다.",
   path: "/wellness-guide",
 });
 

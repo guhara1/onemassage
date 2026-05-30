@@ -6,7 +6,7 @@ import { buildMetadata } from "@/lib/metadata";
 export const metadata: Metadata = buildMetadata({
   title: "이용약관",
   description:
-    "원마사지 서비스 정의, 예약 절차, 결제 및 취소, 환불 기준, 고객 의무, 테라피스트 보호 정책, 부적절한 요청 금지, 면책 조항, 분쟁 해결 절차를 안내합니다.",
+    "원마사지 서비스 정의, 예약·결제·취소, 환불 기준, 고객 의무, 부적절 요청 금지, 분쟁 해결 절차를 안내합니다.",
   path: "/terms",
 });
 

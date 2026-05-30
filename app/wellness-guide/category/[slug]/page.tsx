@@ -32,7 +32,7 @@ export async function generateMetadata({
   if (!category) return {};
   return buildMetadata({
     title: `${category.title} | 웰니스 가이드`,
-    description: category.description,
+    description: category.metaDescription ?? category.description,
     path: `/wellness-guide/category/${category.slug}`,
   });
 }
