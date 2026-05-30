@@ -35,6 +35,27 @@ export default function WellnessGuidePage() {
       </Container>
 
       <Section className="pt-8">
+        <div className="mx-auto mb-10 max-w-3xl space-y-4 text-base leading-relaxed text-forest-700">
+          <p>
+            웰니스 가이드는 방문 마사지를 처음 이용하거나, 일상 피로·근육 긴장·수면 문제를 스스로
+            관리하고 싶은 분들을 위한 정보성 콘텐츠 공간입니다. 검색 순위를 올리기 위해 대량으로
+            찍어내는 글이 아니라, 고객이 안전하고 합리적인 선택을 할 수 있도록 돕는 것을 목적으로
+            작성합니다.
+          </p>
+          <p>
+            모든 글에는 작성자, 작성일, 업데이트일을 표기하며, 건강·통증·운동 회복과 관련된 글에는
+            검수자를 함께 표시합니다. 검수자가 없는 주제는 치료나 의학적 효과를 단정하는 표현을
+            피하고, 누구나 일상에서 참고할 수 있는 생활 정보 수준으로 다룹니다. 정보가 바뀌거나
+            보완이 필요하면 글을 업데이트하고 업데이트일을 갱신합니다.
+          </p>
+          <p>
+            아래 카테고리는 마사지 전후 관리, 직장인 피로 관리, 운동 후 회복, 수면과 휴식, 방문
+            마사지 이용 가이드, 서비스 안전 가이드로 구성됩니다. 각 글은 핵심 답변을 먼저 제시하고,
+            상세 설명과 주의사항, 전문가 상담이 필요한 경우, 관련 서비스, 자주 묻는 질문, 참고
+            자료를 차례로 안내합니다.
+          </p>
+        </div>
+
         <div className="mb-6 flex flex-wrap gap-2">
           {categories.map((c) => (
             <span key={c} className="rounded-full bg-forest-50 px-3 py-1 text-sm text-forest-700">
