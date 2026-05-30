@@ -5,7 +5,7 @@ import { PageHero, Section, Container, Card } from "@/components/ui";
 import { buildMetadata } from "@/lib/metadata";
 
 export const metadata: Metadata = buildMetadata({
-  title: "방문 마사지 예약하기 | 지역·시간 선택",
+  title: "출장마사지 예약하기 | 지역·시간 선택",
   description:
     "방문 지역과 희망 시간을 선택해 예약을 신청하세요. 상담원이 가능 시간과 지역을 확인해 연락드립니다. 건전한 웰니스 목적의 서비스만 제공합니다.",
   path: "/booking",
@@ -22,7 +22,7 @@ export default function BookingPage() {
     <>
       <PageHero
         eyebrow="예약"
-        title="방문 마사지 예약하기"
+        title="출장마사지 예약하기"
         description="아래 정보를 입력해 주시면 상담원이 가능 시간과 지역을 확인해 연락드립니다."
       />
       <Container className="pt-6">

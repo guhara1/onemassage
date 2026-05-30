@@ -7,7 +7,7 @@ import { reviews } from "@/data/reviews";
 import { buildMetadata } from "@/lib/metadata";
 
 export const metadata: Metadata = buildMetadata({
-  title: "실제 고객 후기 | 방문 마사지 이용 후기",
+  title: "실제 고객 후기 | 출장마사지 이용 후기",
   description:
     "실제 예약 고객의 후기만 게시합니다. 이용 지역·서비스·시간·평점·작성일을 함께 표기하며, 허위·과장 후기는 사용하지 않습니다.",
   path: "/reviews",
@@ -36,7 +36,7 @@ export default function ReviewsPage() {
       <Section className="pt-8">
         <div className="mx-auto mb-8 max-w-3xl space-y-4 text-base leading-relaxed text-forest-700">
           <p>
-            후기는 방문 마사지를 선택할 때 가장 현실적인 참고 자료입니다. 그만큼 조작되거나 과장된
+            후기는 출장마사지를 선택할 때 가장 현실적인 참고 자료입니다. 그만큼 조작되거나 과장된
             후기는 고객의 판단을 흐릴 수 있어, 원마사지는 후기를 신중하게 운영합니다. 이 페이지에
             게시되는 후기는 실제 예약·이용 고객이 남긴 내용만을 대상으로 하며, 이용 지역·서비스
             종류·이용 시간·평점·작성일을 함께 표기해 맥락을 투명하게 보여드립니다.

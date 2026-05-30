@@ -36,10 +36,10 @@ export interface Post {
 export const posts: Post[] = [
   {
     slug: "visit-massage-preparation-checklist",
-    title: "방문 마사지 받기 전 준비해야 할 7가지",
-    category: "방문 마사지 이용 가이드",
+    title: "출장마사지 받기 전 준비해야 할 7가지",
+    category: "출장마사지 이용 가이드",
     summary:
-      "처음 방문 마사지를 이용하기 전, 편안하고 안전한 케어를 위해 미리 준비하면 좋은 7가지를 정리했습니다.",
+      "처음 출장마사지를 이용하기 전, 편안하고 안전한 케어를 위해 미리 준비하면 좋은 7가지를 정리했습니다.",
     author: "wellness-editor",
     publishedAt: "2026-04-10",
     updatedAt: "2026-05-20",
@@ -49,7 +49,7 @@ export const posts: Post[] = [
       {
         heading: "1. 편안하고 독립적인 공간 확보",
         body: [
-          "방문 마사지는 고객의 공간에서 진행되므로, 베드나 매트를 펼 수 있는 평평하고 조용한 공간이 필요합니다.",
+          "출장마사지는 고객의 공간에서 진행되므로, 베드나 매트를 펼 수 있는 평평하고 조용한 공간이 필요합니다.",
           "주변 물건을 미리 정리해 두면 준비 시간이 줄고 더 안정적으로 케어를 받을 수 있습니다.",
         ],
       },
@@ -302,7 +302,7 @@ export const posts: Post[] = [
   {
     slug: "aroma-vs-sports-massage-difference",
     title: "아로마 마사지와 스포츠 마사지의 차이",
-    category: "방문 마사지 이용 가이드",
+    category: "출장마사지 이용 가이드",
     summary:
       "목적과 강도가 다른 두 케어의 차이를 비교해, 내 컨디션에 맞는 선택을 돕습니다.",
     author: "wellness-editor",
@@ -346,7 +346,7 @@ export const posts: Post[] = [
   },
   {
     slug: "safety-checklist-before-booking",
-    title: "방문 마사지 예약 전 확인해야 할 안전 기준",
+    title: "출장마사지 예약 전 확인해야 할 안전 기준",
     category: "서비스 안전 가이드",
     summary:
       "안심하고 방문 케어를 이용하기 위해 예약 전에 확인하면 좋은 안전 기준을 정리했습니다.",
@@ -591,7 +591,7 @@ export const posts: Post[] = [
   {
     slug: "how-to-choose-therapist",
     title: "테라피스트 선택 시 확인해야 할 기준",
-    category: "방문 마사지 이용 가이드",
+    category: "출장마사지 이용 가이드",
     summary:
       "믿고 맡길 수 있는 테라피스트인지 가늠하는 데 도움이 되는 확인 기준을 정리했습니다.",
     author: "wellness-editor",
@@ -642,15 +642,15 @@ export const posts: Post[] = [
   },
   {
     slug: "visit-vs-store-massage-difference",
-    title: "방문 마사지와 매장 마사지의 차이",
-    category: "방문 마사지 이용 가이드",
+    title: "출장마사지와 매장 마사지의 차이",
+    category: "출장마사지 이용 가이드",
     summary:
       "이동 없이 받는 방문 케어와 매장 방문의 차이를 비교해, 상황에 맞는 선택을 돕습니다.",
     author: "wellness-editor",
     publishedAt: "2026-04-26",
     updatedAt: "2026-05-20",
     keyTakeaway:
-      "방문 마사지는 이동 부담 없이 익숙한 공간에서 받는 것이 장점이고, 예약제 운영과 공간·출입 조건 확인이 필요합니다. 매장은 즉시 방문이 가능한 대신 이동이 필요합니다.",
+      "출장마사지는 이동 부담 없이 익숙한 공간에서 받는 것이 장점이고, 예약제 운영과 공간·출입 조건 확인이 필요합니다. 매장은 즉시 방문이 가능한 대신 이동이 필요합니다.",
     sections: [
       {
         heading: "공간과 이동",
@@ -846,7 +846,7 @@ export const posts: Post[] = [
   {
     slug: "booking-cancellation-change-guide",
     title: "마사지 예약 취소·변경 시 알아야 할 점",
-    category: "방문 마사지 이용 가이드",
+    category: "출장마사지 이용 가이드",
     summary:
       "예약을 취소하거나 변경해야 할 때 알아두면 좋은 기준과 절차를 정리했습니다.",
     author: "wellness-editor",
@@ -897,7 +897,7 @@ export const posts: Post[] = [
   },
   {
     slug: "hygienic-visit-massage-standards",
-    title: "위생적인 방문 마사지 서비스의 기준",
+    title: "위생적인 출장마사지 서비스의 기준",
     category: "서비스 안전 가이드",
     summary:
       "방문 케어에서 위생이 어떻게 관리되어야 하는지, 고객이 확인할 수 있는 기준을 정리했습니다.",
@@ -949,10 +949,10 @@ export const posts: Post[] = [
   },
   {
     slug: "how-to-identify-legal-visit-massage",
-    title: "합법 방문 마사지 서비스를 구별하는 방법",
+    title: "합법 출장마사지 서비스를 구별하는 방법",
     category: "서비스 안전 가이드",
     summary:
-      "안심하고 이용할 수 있는 합법 웰니스 방문 마사지인지 가려내는 기준을 정리했습니다.",
+      "안심하고 이용할 수 있는 합법 웰니스 출장마사지인지 가려내는 기준을 정리했습니다.",
     author: "wellness-editor",
     publishedAt: "2026-05-22",
     updatedAt: "2026-05-30",
@@ -1001,8 +1001,8 @@ export const posts: Post[] = [
   },
   {
     slug: "first-time-visit-massage-guide",
-    title: "처음 방문 마사지를 이용하는 고객을 위한 안내서",
-    category: "방문 마사지 이용 가이드",
+    title: "처음 출장마사지를 이용하는 고객을 위한 안내서",
+    category: "출장마사지 이용 가이드",
     summary:
       "방문 케어가 처음인 분이 예약부터 마무리까지 전 과정을 편안하게 이해할 수 있도록 안내합니다.",
     author: "wellness-editor",

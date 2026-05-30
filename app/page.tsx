@@ -17,7 +17,7 @@ import { buildMetadata } from "@/lib/metadata";
 import { localBusinessSchema } from "@/lib/schema";
 
 export const metadata: Metadata = buildMetadata({
-  title: "방문 마사지 예약 | 전문 테라피스트 웰니스 홈케어",
+  title: "출장마사지 예약 | 전문 테라피스트 웰니스 홈케어",
   description:
     "검증된 전문 테라피스트가 고객님의 공간으로 방문하는 합법 웰니스 마사지 서비스입니다. 요금, 지역, 위생 정책, 예약 절차를 투명하게 안내합니다.",
   path: "/",
@@ -189,7 +189,7 @@ export default function HomePage() {
       <Container className="pb-4">
         <Notice tone="info">
           본 서비스는 의료 행위가 아니며 질병의 진단·치료를 목적으로 하지 않습니다. 건전한
-          웰니스 목적의 합법 방문 마사지 서비스만 제공합니다.
+          웰니스 목적의 합법 출장마사지 서비스만 제공합니다.
         </Notice>
       </Container>
 

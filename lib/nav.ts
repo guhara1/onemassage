@@ -37,9 +37,12 @@ export const mainNav: NavItem[] = [
     label: "지역안내",
     href: "/areas",
     children: [
-      { label: "강남 방문 마사지", href: "/areas/gangnam" },
-      { label: "송파 방문 마사지", href: "/areas/songpa" },
-      { label: "마포 방문 마사지", href: "/areas/mapo" },
+      { label: "강남 출장마사지", href: "/areas/gangnam" },
+      { label: "수원 출장마사지", href: "/areas/suwon" },
+      { label: "인천 출장마사지", href: "/areas/incheon" },
+      { label: "용인 출장마사지", href: "/areas/yongin" },
+      { label: "부산 출장마사지", href: "/areas/busan" },
+      { label: "성남 출장마사지", href: "/areas/seongnam" },
     ],
   },
   {

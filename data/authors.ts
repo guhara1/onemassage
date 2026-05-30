@@ -19,7 +19,7 @@ export const authors: Author[] = [
       "건강·라이프스타일 매체 콘텐츠 기획 8년",
       "방문 케어 이용 가이드 콘텐츠 다수 작성",
     ],
-    expertise: ["방문 마사지 이용 가이드", "직장인 피로 관리", "수면·휴식 루틴"],
+    expertise: ["출장마사지 이용 가이드", "직장인 피로 관리", "수면·휴식 루틴"],
     contact: "editorial@onemassage.example.com",
     updatedAt: "2026-05-20",
     bio: "고객이 안전하고 합리적으로 방문 웰니스 서비스를 선택할 수 있도록 쉽고 정확한 정보를 전달하는 데 집중합니다.",

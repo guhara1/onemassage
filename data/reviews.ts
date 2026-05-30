@@ -34,7 +34,7 @@ export const reviews: Review[] = [
   },
   {
     id: "r2",
-    area: "송파",
+    area: "수원",
     service: "아로마 릴렉스 케어",
     duration: "60분",
     rating: 5,
@@ -45,7 +45,7 @@ export const reviews: Review[] = [
   },
   {
     id: "r3",
-    area: "마포",
+    area: "인천",
     service: "스포츠 근육 케어",
     duration: "90분",
     rating: 4,

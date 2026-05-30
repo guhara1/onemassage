@@ -9,9 +9,9 @@ import { buildMetadata } from "@/lib/metadata";
 import { faqSchema } from "@/lib/schema";
 
 export const metadata: Metadata = buildMetadata({
-  title: "자주 묻는 질문 | 방문 마사지 이용 안내",
+  title: "자주 묻는 질문 | 출장마사지 이용 안내",
   description:
-    "방문 마사지 합법 여부, 이용 가능 공간, 준비사항, 적합하지 않은 경우, 테라피스트 지정, 후기 관리 등 자주 묻는 질문을 정리했습니다.",
+    "출장마사지 합법 여부, 이용 가능 공간, 준비사항, 적합하지 않은 경우, 테라피스트 지정, 후기 관리 등 자주 묻는 질문을 정리했습니다.",
   path: "/faq",
 });
 

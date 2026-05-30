@@ -9,7 +9,7 @@ import { buildMetadata } from "@/lib/metadata";
 export const metadata: Metadata = buildMetadata({
   title: "웰니스 가이드 | 피로·근육·수면 관리 정보",
   description:
-    "방문 마사지 이용 가이드와 직장인 피로 관리, 운동 후 회복, 수면·휴식 등 검수를 거친 웰니스 정보를 제공합니다. 작성자와 업데이트일을 함께 표기합니다.",
+    "출장마사지 이용 가이드와 직장인 피로 관리, 운동 후 회복, 수면·휴식 등 검수를 거친 웰니스 정보를 제공합니다. 작성자와 업데이트일을 함께 표기합니다.",
   path: "/wellness-guide",
 });
 
@@ -18,7 +18,7 @@ const categories = [
   "직장인 피로 관리",
   "운동 후 회복",
   "수면과 휴식",
-  "방문 마사지 이용 가이드",
+  "출장마사지 이용 가이드",
   "서비스 안전 가이드",
 ];
 
@@ -37,7 +37,7 @@ export default function WellnessGuidePage() {
       <Section className="pt-8">
         <div className="mx-auto mb-10 max-w-3xl space-y-4 text-base leading-relaxed text-forest-700">
           <p>
-            웰니스 가이드는 방문 마사지를 처음 이용하거나, 일상 피로·근육 긴장·수면 문제를 스스로
+            웰니스 가이드는 출장마사지를 처음 이용하거나, 일상 피로·근육 긴장·수면 문제를 스스로
             관리하고 싶은 분들을 위한 정보성 콘텐츠 공간입니다. 검색 순위를 올리기 위해 대량으로
             찍어내는 글이 아니라, 고객이 안전하고 합리적인 선택을 할 수 있도록 돕는 것을 목적으로
             작성합니다.

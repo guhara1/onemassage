@@ -7,9 +7,9 @@ import { services } from "@/data/services";
 import { buildMetadata } from "@/lib/metadata";
 
 export const metadata: Metadata = buildMetadata({
-  title: "방문 마사지 서비스 안내 | 웰니스 홈케어 종류",
+  title: "출장마사지 서비스 안내 | 웰니스 홈케어 종류",
   description:
-    "아로마 릴렉스, 스포츠 근육, 오피스 피로, 커플·가족 방문 케어까지. 목적에 맞는 합법 웰니스 방문 마사지 서비스를 비교해 선택하세요.",
+    "아로마 릴렉스, 스포츠 근육, 오피스 피로, 커플·가족 방문 케어까지. 목적에 맞는 합법 웰니스 출장마사지 서비스를 비교해 선택하세요.",
   path: "/services",
 });
 
@@ -19,7 +19,7 @@ export default function ServicesPage() {
       <PageHero
         eyebrow="서비스"
         title="방문 케어 서비스"
-        description="목적과 컨디션에 맞춰 선택할 수 있는 합법 웰니스 방문 마사지 서비스입니다."
+        description="목적과 컨디션에 맞춰 선택할 수 있는 합법 웰니스 출장마사지 서비스입니다."
       />
       <Container className="pt-6">
         <Breadcrumbs items={[{ name: "서비스", href: "/services" }]} />

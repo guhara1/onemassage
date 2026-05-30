@@ -6,9 +6,9 @@ import { PageHero, Section, SectionTitle, Container, Card, Notice } from "@/comp
 import { buildMetadata } from "@/lib/metadata";
 
 export const metadata: Metadata = buildMetadata({
-  title: "방문 마사지 요금 안내 | 시간별 가격과 출장비",
+  title: "출장마사지 요금 안내 | 시간별 가격과 출장비",
   description:
-    "방문 마사지 요금을 60분·90분·120분 기준으로 투명하게 안내합니다. 심야 추가 비용, 지역별 출장비, 환불·취소 기준을 예약 전에 확인하세요.",
+    "출장마사지 요금을 60분·90분·120분 기준으로 투명하게 안내합니다. 심야 추가 비용, 지역별 출장비, 환불·취소 기준을 예약 전에 확인하세요.",
   path: "/pricing",
 });
 
@@ -39,7 +39,7 @@ export default function PricingPage() {
     <>
       <PageHero
         eyebrow="이용안내"
-        title="방문 마사지 요금 안내"
+        title="출장마사지 요금 안내"
         description="모든 요금과 추가 비용을 예약 전에 투명하게 안내합니다."
       />
       <Container className="pt-6">

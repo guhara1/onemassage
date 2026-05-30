@@ -35,7 +35,7 @@ export default function TherapistStandardsPage() {
       <Section className="pt-8">
         <div className="mx-auto mb-10 max-w-3xl space-y-4 text-base leading-relaxed text-forest-700">
           <p>
-            방문 마사지는 테라피스트가 고객의 사적인 공간으로 직접 방문한다는 점에서, 매장 서비스보다
+            출장마사지는 테라피스트가 고객의 사적인 공간으로 직접 방문한다는 점에서, 매장 서비스보다
             신뢰와 검증이 더 중요합니다. 원마사지는 누가 방문하는지, 어떤 기준으로 선발·관리되는지를
             투명하게 공개하는 것이 고객과 테라피스트 모두를 보호하는 출발점이라고 봅니다. 아래는
             테라피스트가 활동하기 위해 거치는 검증·교육 기준입니다.

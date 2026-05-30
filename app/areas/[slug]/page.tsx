@@ -54,7 +54,7 @@ export default async function AreaDetailPage({
         data={[
           localBusinessSchema({ areaServed: `${area.name} 일대`, url }),
           serviceSchema({
-            name: `${area.name} 방문 마사지`,
+            name: `${area.name} 출장마사지`,
             description: area.metaDescription,
             url,
             areaServed: `${area.name} 일대`,

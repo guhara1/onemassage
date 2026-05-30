@@ -10,7 +10,7 @@ import { siteConfig } from "@/lib/site";
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: "방문 마사지 예약 | 전문 테라피스트 웰니스 홈케어",
+    default: "출장마사지 예약 | 전문 테라피스트 웰니스 홈케어",
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,

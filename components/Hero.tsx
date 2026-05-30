@@ -7,7 +7,7 @@ export function Hero() {
         <div className="grid items-center gap-10 lg:grid-cols-2">
           <div>
             <span className="inline-flex items-center gap-1.5 rounded-full bg-forest-100 px-3 py-1 text-xs font-semibold text-forest-700">
-              합법 웰니스 방문 마사지 · 예약제 운영
+              합법 웰니스 출장마사지 · 예약제 운영
             </span>
             <h1 className="mt-4 text-3xl font-bold leading-tight tracking-tight text-forest-900 md:text-5xl">
               전문 테라피스트가 방문하는
@@ -15,7 +15,7 @@ export function Hero() {
               웰니스 마사지 홈케어
             </h1>
             <p className="mt-5 max-w-xl text-base leading-relaxed text-forest-600 md:text-lg">
-              피로가 쌓인 하루, 고객님의 공간에서 편안하게 관리받으세요. 예약제 방문 마사지
+              피로가 쌓인 하루, 고객님의 공간에서 편안하게 관리받으세요. 예약제 출장마사지
               서비스로, 테라피스트 검증·위생 관리·요금 안내를 투명하게 운영합니다.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">

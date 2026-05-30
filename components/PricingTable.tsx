@@ -1,45 +1,39 @@
-import { services } from "@/data/services";
+import { pricingMenu } from "@/data/pricing";
 
-/** 시간별 기본 요금표 (서비스별 60/90/120분) */
+/** 코스별 카드형 요금표 (카테고리 태그 + 시간별 가격) */
 export function PricingTable() {
-  const durations = ["60분", "90분", "120분"];
-
   return (
-    <div className="overflow-x-auto rounded-2xl border border-forest-100 shadow-sm">
-      <table className="w-full min-w-[480px] border-collapse text-left text-sm">
-        <thead>
-          <tr className="bg-forest-700 text-white">
-            <th scope="col" className="px-4 py-3 font-semibold">
-              서비스
-            </th>
-            {durations.map((d) => (
-              <th key={d} scope="col" className="px-4 py-3 text-right font-semibold">
-                {d}
-              </th>
+    <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      {pricingMenu.map((item) => (
+        <div
+          key={item.name}
+          className="relative flex flex-col rounded-2xl border border-forest-100 bg-white p-6 shadow-sm transition-shadow hover:shadow-md"
+        >
+          {item.best && (
+            <span className="absolute right-5 top-5 rounded-full bg-gold-400 px-3 py-1 text-xs font-bold uppercase tracking-wide text-white">
+              BEST
+            </span>
+          )}
+          <p className="text-xs font-semibold uppercase tracking-wide text-gold-500">
+            {item.tag}
+          </p>
+          <h3 className="mt-1 text-xl font-bold text-forest-900">{item.name}</h3>
+          <p className="mt-2 text-sm leading-relaxed text-forest-600">
+            {item.description}
+          </p>
+          <dl className="mt-5 space-y-2 border-t border-forest-100 pt-4">
+            {item.tiers.map((tier) => (
+              <div
+                key={tier.duration}
+                className="flex items-center justify-between text-sm"
+              >
+                <dt className="text-forest-500">{tier.duration}</dt>
+                <dd className="font-semibold text-forest-900">{tier.price}</dd>
+              </div>
             ))}
-          </tr>
-        </thead>
-        <tbody>
-          {services.map((s, idx) => (
-            <tr
-              key={s.slug}
-              className={idx % 2 === 0 ? "bg-white" : "bg-forest-50/50"}
-            >
-              <th scope="row" className="px-4 py-3 font-medium text-forest-900">
-                {s.name}
-              </th>
-              {durations.map((d) => {
-                const price = s.prices.find((p) => p.duration.startsWith(d.replace("분", "")) || p.duration.includes(d));
-                return (
-                  <td key={d} className="px-4 py-3 text-right text-forest-700">
-                    {price ? price.price : "-"}
-                  </td>
-                );
-              })}
-            </tr>
-          ))}
-        </tbody>
-      </table>
+          </dl>
+        </div>
+      ))}
     </div>
   );
 }
