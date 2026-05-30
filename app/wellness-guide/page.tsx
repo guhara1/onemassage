@@ -2,9 +2,14 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { PageHero, Section, Container, Notice } from "@/components/ui";
-import { posts } from "@/data/posts";
-import { getAuthor } from "@/data/authors";
+import { PostGrid } from "@/components/PostGrid";
+import { Pagination } from "@/components/Pagination";
+import { CategoryChips } from "@/components/CategoryChips";
+import { JsonLd } from "@/components/JsonLd";
+import { sortedPosts, pageSlice, totalPagesOf } from "@/lib/wellness";
 import { buildMetadata } from "@/lib/metadata";
+import { itemListSchema } from "@/lib/schema";
+import { siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = buildMetadata({
   title: "웰니스 가이드 | 피로·근육·수면 관리 정보",
@@ -13,18 +18,26 @@ export const metadata: Metadata = buildMetadata({
   path: "/wellness-guide",
 });
 
-const categories = [
-  "마사지 전후 관리",
-  "직장인 피로 관리",
-  "운동 후 회복",
-  "수면과 휴식",
-  "출장마사지 이용 가이드",
-  "서비스 안전 가이드",
-];
-
 export default function WellnessGuidePage() {
+  const all = sortedPosts();
+  const totalPages = totalPagesOf(all.length);
+  const pagePosts = pageSlice(all, 1);
+
   return (
     <>
+      <JsonLd
+        data={itemListSchema({
+          name: "웰니스 가이드",
+          description:
+            "출장마사지 이용 가이드와 피로·근육·수면 관리 등 검수를 거친 웰니스 정보 모음.",
+          url: `${siteConfig.url}/wellness-guide`,
+          items: pagePosts.map((p) => ({
+            name: p.title,
+            url: `${siteConfig.url}/wellness-guide/${p.slug}`,
+          })),
+        })}
+      />
+
       <PageHero
         eyebrow="웰니스 가이드"
         title="웰니스 가이드"
@@ -50,42 +63,16 @@ export default function WellnessGuidePage() {
           </p>
           <p>
             아래 카테고리는 마사지 전후 관리, 직장인 피로 관리, 운동 후 회복, 수면과 휴식,
-            출장마사지 이용 가이드, 서비스 안전 가이드로 구성됩니다. 각 글은 핵심 답변을 먼저 제시하고,
-            상세 설명과 주의사항, 전문가 상담이 필요한 경우, 관련 서비스, 자주 묻는 질문, 참고
-            자료를 차례로 안내합니다.
+            출장마사지 이용 가이드, 서비스 안전 가이드로 구성됩니다. 관심 있는 카테고리를 눌러 해당
+            주제의 글만 모아 볼 수 있습니다.
           </p>
         </div>
 
-        <div className="mb-6 flex flex-wrap gap-2">
-          {categories.map((c) => (
-            <span key={c} className="rounded-full bg-forest-50 px-3 py-1 text-sm text-forest-700">
-              {c}
-            </span>
-          ))}
-        </div>
+        <CategoryChips />
 
-        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-          {posts.map((p) => {
-            const author = getAuthor(p.author);
-            return (
-              <Link
-                key={p.slug}
-                href={`/wellness-guide/${p.slug}`}
-                className="group flex flex-col rounded-2xl border border-forest-100 bg-white p-6 shadow-sm transition-all hover:border-forest-300 hover:shadow-md"
-              >
-                <span className="text-xs font-medium text-forest-500">{p.category}</span>
-                <h2 className="mt-2 text-lg font-semibold text-forest-900 group-hover:text-forest-700">
-                  {p.title}
-                </h2>
-                <p className="mt-2 flex-1 text-sm leading-relaxed text-forest-600">{p.summary}</p>
-                <div className="mt-4 flex items-center justify-between text-xs text-forest-400">
-                  <span>{author?.name}</span>
-                  <time dateTime={p.updatedAt}>업데이트 {p.updatedAt}</time>
-                </div>
-              </Link>
-            );
-          })}
-        </div>
+        <PostGrid posts={pagePosts} />
+
+        <Pagination basePath="/wellness-guide" page={1} totalPages={totalPages} />
 
         <div className="mt-8">
           <Notice tone="info">

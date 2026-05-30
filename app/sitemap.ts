@@ -4,6 +4,12 @@ import { services } from "@/data/services";
 import { areas } from "@/data/areas";
 import { posts } from "@/data/posts";
 import { authors } from "@/data/authors";
+import {
+  wellnessCategories,
+  postsInCategory,
+  sortedPosts,
+  totalPagesOf,
+} from "@/lib/wellness";
 
 // 정적 export(output: "export")에서 sitemap.xml을 생성하기 위해 필요
 export const dynamic = "force-static";
@@ -66,11 +72,47 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.4,
   }));
 
+  // 웰니스 가이드 카테고리 허브 + 카테고리 내 페이지네이션
+  const categoryEntries: MetadataRoute.Sitemap = wellnessCategories.flatMap((c) => {
+    const total = totalPagesOf(postsInCategory(c.label).length);
+    const entries: MetadataRoute.Sitemap = [
+      {
+        url: `${base}/wellness-guide/category/${c.slug}`,
+        lastModified: now,
+        changeFrequency: "weekly",
+        priority: 0.6,
+      },
+    ];
+    for (let n = 2; n <= total; n++) {
+      entries.push({
+        url: `${base}/wellness-guide/category/${c.slug}/page/${n}`,
+        lastModified: now,
+        changeFrequency: "weekly",
+        priority: 0.4,
+      });
+    }
+    return entries;
+  });
+
+  // 웰니스 가이드 전체 목록 2페이지 이상
+  const archiveEntries: MetadataRoute.Sitemap = [];
+  const guideTotal = totalPagesOf(sortedPosts().length);
+  for (let n = 2; n <= guideTotal; n++) {
+    archiveEntries.push({
+      url: `${base}/wellness-guide/page/${n}`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.4,
+    });
+  }
+
   return [
     ...staticEntries,
     ...serviceEntries,
     ...areaEntries,
     ...postEntries,
     ...authorEntries,
+    ...categoryEntries,
+    ...archiveEntries,
   ];
 }

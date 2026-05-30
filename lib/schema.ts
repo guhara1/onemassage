@@ -109,6 +109,32 @@ export function faqSchema(faqs: { question: string; answer: string }[]) {
   };
 }
 
+/** CollectionPage + ItemList 구조화 데이터 (목록·카테고리 허브) */
+export function itemListSchema(opts: {
+  name: string;
+  description: string;
+  url: string;
+  items: { name: string; url: string }[];
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: opts.name,
+    description: opts.description,
+    url: opts.url,
+    inLanguage: "ko",
+    mainEntity: {
+      "@type": "ItemList",
+      itemListElement: opts.items.map((it, i) => ({
+        "@type": "ListItem",
+        position: i + 1,
+        url: it.url,
+        name: it.name,
+      })),
+    },
+  };
+}
+
 /** Article 구조화 데이터 (블로그 글) */
 export function articleSchema(opts: {
   title: string;
