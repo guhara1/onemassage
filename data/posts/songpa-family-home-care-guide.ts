@@ -6,6 +6,8 @@ export const songpaFamilyHomeCareGuide: Post = {
   category: "출장마사지 이용 가이드",
   summary:
     "잠실·문정·가락 대단지 아파트에서 가족이나 커플이 순차로 케어를 받을 때 알아 두면 좋은 차량 등록, 단지 출입, 공간 준비와 커플·가족 케어 활용법을 정리했습니다.",
+  metaDescription:
+    "잠실·문정·가락 대단지에서 가족·커플이 순차로 케어받을 때 차량 등록, 단지 출입, 공간 준비와 활용법을 정리했습니다.",
   author: "wellness-editor",
   publishedAt: "2026-05-31",
   updatedAt: "2026-05-31",

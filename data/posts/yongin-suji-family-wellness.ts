@@ -6,6 +6,8 @@ export const yonginSujiFamilyWellness: Post = {
   category: "출장마사지 이용 가이드",
   summary:
     "용인 수지·죽전·동백 신도시 가족이 주말에 자택에서 함께 방문 케어를 받을 때 단지 출입, 주차, 순차 진행을 미리 준비하는 방법을 정리했습니다.",
+  metaDescription:
+    "용인 수지·죽전·동백 신도시 가족이 주말 자택에서 함께 방문 케어를 받을 때 단지 출입, 주차, 순차 진행 준비를 안내합니다.",
   author: "wellness-editor",
   publishedAt: "2026-05-31",
   updatedAt: "2026-05-31",
