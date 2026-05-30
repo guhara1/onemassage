@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+/* Pretendard 웹폰트는 app/layout.tsx 에서 <link>로 로드합니다 (성능·@import 순서 이슈 회피) */
+
 /*
   원마사지 디자인 토큰
   메인: 딥 그린 / 네이비, 서브: 베이지·라이트 그레이·화이트, 포인트: 골드·민트
@@ -34,9 +36,6 @@
     BlinkMacSystemFont, system-ui, "Segoe UI", Roboto, "Helvetica Neue",
     "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
 }
-
-/* Pretendard 웹폰트 (CDN) */
-@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
 
 html {
   scroll-behavior: smooth;
