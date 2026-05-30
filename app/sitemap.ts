@@ -5,6 +5,9 @@ import { areas } from "@/data/areas";
 import { posts } from "@/data/posts";
 import { authors } from "@/data/authors";
 
+// 정적 export(output: "export")에서 sitemap.xml을 생성하기 위해 필요
+export const dynamic = "force-static";
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = siteConfig.url;
   const now = new Date();
