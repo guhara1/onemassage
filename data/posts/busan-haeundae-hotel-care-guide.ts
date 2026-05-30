@@ -6,6 +6,8 @@ export const busanHaeundaeHotelCareGuide: Post = {
   category: "출장마사지 이용 가이드",
   summary:
     "해운대·광안리의 호텔과 리조트에 투숙하는 여행객이 객실에서 방문 케어를 받을 때 알아 두면 좋은 객실 출입 규정, 성수기 교통 사정, 여행 피로 회복 준비를 현장 경험을 바탕으로 정리했습니다.",
+  metaDescription:
+    "해운대·광안리 호텔 객실에서 출장마사지를 받을 때 알아둘 출입 규정, 성수기 교통, 여행 피로 회복 준비를 안내합니다.",
   author: "wellness-editor",
   publishedAt: "2026-05-31",
   updatedAt: "2026-05-31",

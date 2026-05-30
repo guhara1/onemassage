@@ -6,6 +6,8 @@ export const gangnamOfficetelVisitCareGuide: Post = {
   category: "출장마사지 이용 가이드",
   summary:
     "공동현관 출입, 방문자 등록, 주차, 심야 방문 준비처럼 강남 오피스텔·주상복합 특유의 환경에서 출장마사지를 매끄럽게 받기 위한 실용 팁을 정리했습니다.",
+  metaDescription:
+    "강남 오피스텔·주상복합에서 공동현관 출입, 방문자 등록, 주차, 심야 방문까지 출장마사지를 매끄럽게 받는 팁을 정리했습니다.",
   author: "wellness-editor",
   publishedAt: "2026-05-31",
   updatedAt: "2026-05-31",

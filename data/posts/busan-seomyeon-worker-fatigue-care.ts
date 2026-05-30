@@ -6,6 +6,8 @@ export const busanSeomyeonWorkerFatigueCare: Post = {
   category: "직장인 피로 관리",
   summary:
     "부산 서면·센텀시티 업무지구에서 일하는 직장인이 퇴근 후 쌓인 목·어깨·허리 피로를 생활습관으로 덜어 내는 방법과, 집에서 방문 케어를 활용할 때의 준비를 현장 경험을 바탕으로 정리했습니다.",
+  metaDescription:
+    "서면·센텀시티 직장인이 퇴근 후 목·어깨·허리 피로를 생활습관으로 덜고 집에서 방문 케어를 받을 때의 준비를 안내합니다.",
   author: "wellness-editor",
   reviewer: "therapy-reviewer",
   publishedAt: "2026-05-31",

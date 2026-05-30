@@ -6,6 +6,8 @@ export const mapoOnePersonHouseholdCare: Post = {
   category: "출장마사지 이용 가이드",
   summary:
     "마포 홍대·합정 일대 원룸·오피스텔 1인 가구가 좁은 공간에서 방문 케어를 받을 때 필요한 공간 준비, 공동현관 출입, 주말 심야 교통 등 현실적인 팁을 정리했습니다.",
+  metaDescription:
+    "홍대·합정 원룸·오피스텔 1인 가구가 좁은 공간에서 방문 케어를 받을 때 필요한 공간 준비와 출입, 심야 교통 팁을 정리했습니다.",
   author: "wellness-editor",
   publishedAt: "2026-05-31",
   updatedAt: "2026-05-31",

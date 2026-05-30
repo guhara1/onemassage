@@ -6,6 +6,8 @@ export const mapoMediaWorkerFatigueCare: Post = {
   category: "직장인 피로 관리",
   summary:
     "마포 상암 업무지구에서 장시간 모니터 작업과 야근을 이어 가는 미디어·IT 종사자를 위해 눈·목·어깨 피로를 더는 생활 습관과 방문 케어 활용법을 정리했습니다.",
+  metaDescription:
+    "상암 업무지구 미디어·IT 종사자가 장시간 작업과 야근으로 쌓인 눈·목·어깨 피로를 더는 습관과 방문 케어 활용법을 안내합니다.",
   author: "wellness-editor",
   reviewer: "therapy-reviewer",
   publishedAt: "2026-05-31",

@@ -6,6 +6,8 @@ export const incheonSongdoNewCityCare: Post = {
   category: "출장마사지 이용 가이드",
   summary:
     "송도·청라의 신축 대단지에서 방문 케어를 받을 때 알아 두면 좋은 방문자 등록, 공동현관 출입, 주차, 가족 케어 준비를 현장 경험을 바탕으로 정리했습니다.",
+  metaDescription:
+    "송도·청라 신축 대단지에서 방문 케어를 받을 때 알아둘 방문자 등록, 공동현관 출입, 주차, 가족 케어 준비를 안내합니다.",
   author: "wellness-editor",
   publishedAt: "2026-05-31",
   updatedAt: "2026-05-31",

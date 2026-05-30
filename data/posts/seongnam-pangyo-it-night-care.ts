@@ -6,6 +6,8 @@ export const seongnamPangyoItNightCare: Post = {
   category: "직장인 피로 관리",
   summary:
     "성남 판교 테크노밸리에서 늦은 야근을 마친 IT 직장인이 자택이나 오피스텔에서 목·어깨·눈 피로를 덜고 방문 케어를 활용하는 방법을 정리했습니다.",
+  metaDescription:
+    "판교 테크노밸리에서 야근을 마친 IT 직장인이 자택에서 목·어깨·눈 피로를 덜고 방문 케어를 활용하는 법을 안내합니다.",
   author: "wellness-editor",
   reviewer: "therapy-reviewer",
   publishedAt: "2026-05-31",

@@ -6,6 +6,8 @@ export const seongnamBundangFamilyCareGuide: Post = {
   category: "출장마사지 이용 가이드",
   summary:
     "성남 분당·정자·서현 대단지 아파트에서 가족 단위로 방문 케어를 받을 때 차량 등록, 단지 출입, 공간 준비를 현장 경험을 바탕으로 정리했습니다.",
+  metaDescription:
+    "분당·정자·서현 대단지 아파트에서 가족이 방문 케어를 받을 때 차량 등록, 단지 출입, 공간 준비를 안내합니다.",
   author: "wellness-editor",
   publishedAt: "2026-05-31",
   updatedAt: "2026-05-31",

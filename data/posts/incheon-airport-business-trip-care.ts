@@ -6,6 +6,8 @@ export const incheonAirportBusinessTripCare: Post = {
   category: "직장인 피로 관리",
   summary:
     "인천공항 인근 호텔에 머무는 출장객이 장거리 이동과 긴 대기로 쌓인 피로를 객실에서 덜어 내는 습관과, 객실 방문 케어를 이용할 때의 출입 절차를 정리했습니다.",
+  metaDescription:
+    "인천공항 인근 호텔 출장객이 장거리 이동 피로를 객실에서 덜고 방문 케어를 이용할 때의 출입 절차를 정리했습니다.",
   author: "wellness-editor",
   reviewer: "therapy-reviewer",
   publishedAt: "2026-05-31",

@@ -6,6 +6,8 @@ export const gangnamOfficeWorkerNightCare: Post = {
   category: "직장인 피로 관리",
   summary:
     "역삼·선릉·삼성 업무지구에서 늦게 퇴근한 직장인이 자택이나 오피스텔에서 목·어깨·눈 피로를 관리하는 생활 습관과 방문 케어 활용법을 정리했습니다.",
+  metaDescription:
+    "역삼·선릉 일대에서 야근 후 늦게 퇴근한 직장인이 자택에서 목·어깨·눈 피로를 푸는 습관과 방문 케어 활용법을 안내합니다.",
   author: "wellness-editor",
   reviewer: "therapy-reviewer",
   publishedAt: "2026-05-31",
