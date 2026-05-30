@@ -1,0 +1,71 @@
+@import "tailwindcss";
+
+/*
+  원마사지 디자인 토큰
+  메인: 딥 그린 / 네이비, 서브: 베이지·라이트 그레이·화이트, 포인트: 골드·민트
+*/
+@theme {
+  --color-forest-50: #f1f6f3;
+  --color-forest-100: #dde9e1;
+  --color-forest-200: #bcd3c5;
+  --color-forest-300: #91b6a1;
+  --color-forest-400: #66937b;
+  --color-forest-500: #487760;
+  --color-forest-600: #355f4c;
+  --color-forest-700: #2a4c3e;
+  --color-forest-800: #233d33;
+  --color-forest-900: #1d322b;
+  --color-forest-950: #0f1d18;
+
+  --color-sand-50: #faf8f3;
+  --color-sand-100: #f3ede0;
+  --color-sand-200: #e7dac2;
+  --color-sand-300: #d9c39c;
+  --color-sand-400: #c9a874;
+  --color-sand-500: #bd9258;
+
+  --color-gold-400: #c9a14a;
+  --color-gold-500: #b08930;
+
+  --color-mint-400: #6fc2a6;
+  --color-mint-500: #4fa888;
+
+  --font-sans: "Pretendard", "Pretendard Variable", -apple-system,
+    BlinkMacSystemFont, system-ui, "Segoe UI", Roboto, "Helvetica Neue",
+    "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+}
+
+/* Pretendard 웹폰트 (CDN) */
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--color-forest-950);
+  background-color: #ffffff;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* 접근성: 키보드 포커스 표시 */
+:focus-visible {
+  outline: 2px solid var(--color-forest-600);
+  outline-offset: 2px;
+}
+
+/* 모션 최소화 선호 사용자 배려 */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

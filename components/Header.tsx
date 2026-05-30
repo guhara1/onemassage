@@ -1,0 +1,131 @@
+"use client";
+
+import Link from "next/link";
+import { useState } from "react";
+import { mainNav } from "@/lib/nav";
+import { siteConfig } from "@/lib/site";
+import { cn } from "@/lib/utils";
+
+export function Header() {
+  const [mobileOpen, setMobileOpen] = useState(false);
+
+  return (
+    <header className="sticky top-0 z-50 border-b border-forest-100 bg-white/95 backdrop-blur">
+      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
+        {/* 로고 */}
+        <Link href="/" className="flex items-center gap-2 shrink-0" aria-label={`${siteConfig.name} 홈으로`}>
+          <span className="flex h-9 w-9 items-center justify-center rounded-full bg-forest-700 text-sm font-bold text-white">
+            원
+          </span>
+          <span className="text-lg font-bold text-forest-800">{siteConfig.name}</span>
+        </Link>
+
+        {/* 데스크톱 메뉴 */}
+        <nav className="hidden lg:flex lg:items-center lg:gap-1" aria-label="주요 메뉴">
+          {mainNav.map((item) => (
+            <div key={item.label} className="group relative">
+              <Link
+                href={item.href}
+                className="inline-flex items-center rounded-md px-3 py-2 text-sm font-medium text-forest-800 transition-colors hover:bg-forest-50 hover:text-forest-900"
+              >
+                {item.label}
+              </Link>
+              {item.children && (
+                <div className="invisible absolute left-0 top-full z-50 min-w-52 rounded-xl border border-forest-100 bg-white p-2 opacity-0 shadow-lg transition-all group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+                  {item.children.map((child) => (
+                    <Link
+                      key={child.href}
+                      href={child.href}
+                      className="block rounded-lg px-3 py-2 text-sm text-forest-700 transition-colors hover:bg-forest-50"
+                    >
+                      {child.label}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+          ))}
+        </nav>
+
+        {/* 우측 CTA */}
+        <div className="hidden items-center gap-2 md:flex">
+          <a
+            href={siteConfig.phoneHref}
+            className="rounded-lg px-3 py-2 text-sm font-medium text-forest-800 transition-colors hover:bg-forest-50"
+          >
+            전화 상담
+          </a>
+          <a
+            href={siteConfig.kakao}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="rounded-lg border border-forest-200 px-3 py-2 text-sm font-medium text-forest-800 transition-colors hover:bg-forest-50"
+          >
+            카카오 상담
+          </a>
+          <Link
+            href="/booking"
+            className="rounded-lg bg-forest-700 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-forest-800"
+          >
+            예약하기
+          </Link>
+        </div>
+
+        {/* 모바일 메뉴 토글 */}
+        <button
+          type="button"
+          className="inline-flex items-center justify-center rounded-md p-2 text-forest-800 lg:hidden"
+          aria-expanded={mobileOpen}
+          aria-controls="mobile-menu"
+          aria-label="메뉴 열기"
+          onClick={() => setMobileOpen((v) => !v)}
+        >
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            {mobileOpen ? (
+              <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+            ) : (
+              <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+            )}
+          </svg>
+        </button>
+      </div>
+
+      {/* 모바일 메뉴 패널 */}
+      <div
+        id="mobile-menu"
+        className={cn(
+          "lg:hidden",
+          mobileOpen ? "block" : "hidden",
+        )}
+      >
+        <nav className="max-h-[70vh] space-y-1 overflow-y-auto border-t border-forest-100 px-4 py-3" aria-label="모바일 메뉴">
+          {mainNav.map((item) => (
+            <div key={item.label} className="py-1">
+              <Link
+                href={item.href}
+                className="block rounded-md px-2 py-2 text-base font-semibold text-forest-900"
+                onClick={() => setMobileOpen(false)}
+              >
+                {item.label}
+              </Link>
+              {item.children && (
+                <div className="ml-2 border-l border-forest-100 pl-3">
+                  {item.children.map((child) => (
+                    <Link
+                      key={child.href}
+                      href={child.href}
+                      className="block rounded-md px-2 py-1.5 text-sm text-forest-600"
+                      onClick={() => setMobileOpen(false)}
+                    >
+                      {child.label}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+          ))}
+        </nav>
+      </div>
+    </header>
+  );
+}
