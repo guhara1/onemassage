@@ -3,10 +3,18 @@ export interface NavChild {
   href: string;
 }
 
+/** 드롭다운 내 소제목 그룹 (예: 지역안내의 서울/경기·인천/부산) */
+export interface NavGroup {
+  label: string;
+  children: NavChild[];
+}
+
 export interface NavItem {
   label: string;
   href: string;
   children?: NavChild[];
+  /** 그룹형 드롭다운 (children보다 우선해 렌더) */
+  groups?: NavGroup[];
 }
 
 export const mainNav: NavItem[] = [
@@ -36,13 +44,29 @@ export const mainNav: NavItem[] = [
   {
     label: "지역안내",
     href: "/areas",
-    children: [
-      { label: "강남 출장마사지", href: "/areas/gangnam" },
-      { label: "수원 출장마사지", href: "/areas/suwon" },
-      { label: "인천 출장마사지", href: "/areas/incheon" },
-      { label: "용인 출장마사지", href: "/areas/yongin" },
-      { label: "부산 출장마사지", href: "/areas/busan" },
-      { label: "성남 출장마사지", href: "/areas/seongnam" },
+    children: [{ label: "전체 지역 보기", href: "/areas" }],
+    groups: [
+      {
+        label: "서울",
+        children: [
+          { label: "강남 출장마사지", href: "/areas/gangnam" },
+          { label: "송파 출장마사지", href: "/areas/songpa" },
+          { label: "마포 출장마사지", href: "/areas/mapo" },
+        ],
+      },
+      {
+        label: "경기·인천",
+        children: [
+          { label: "수원 출장마사지", href: "/areas/suwon" },
+          { label: "용인 출장마사지", href: "/areas/yongin" },
+          { label: "성남 출장마사지", href: "/areas/seongnam" },
+          { label: "인천 출장마사지", href: "/areas/incheon" },
+        ],
+      },
+      {
+        label: "부산",
+        children: [{ label: "부산 출장마사지", href: "/areas/busan" }],
+      },
     ],
   },
   {

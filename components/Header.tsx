@@ -30,17 +30,51 @@ export function Header() {
               >
                 {item.label}
               </Link>
-              {item.children && (
-                <div className="invisible absolute left-0 top-full z-50 min-w-52 rounded-xl border border-forest-100 bg-white p-2 opacity-0 shadow-lg transition-all group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
-                  {item.children.map((child) => (
-                    <Link
-                      key={child.href}
-                      href={child.href}
-                      className="block rounded-lg px-3 py-2 text-sm text-forest-700 transition-colors hover:bg-forest-50"
-                    >
-                      {child.label}
-                    </Link>
-                  ))}
+              {(item.groups || item.children) && (
+                <div className="invisible absolute left-0 top-full z-50 rounded-xl border border-forest-100 bg-white p-3 opacity-0 shadow-lg transition-all group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+                  {item.groups ? (
+                    <>
+                      <div className="flex gap-5">
+                        {item.groups.map((grp) => (
+                          <div key={grp.label} className="min-w-36">
+                            <p className="px-3 pb-1.5 text-xs font-bold uppercase tracking-wide text-gold-500">
+                              {grp.label}
+                            </p>
+                            {grp.children.map((child) => (
+                              <Link
+                                key={child.href}
+                                href={child.href}
+                                className="block whitespace-nowrap rounded-lg px-3 py-2 text-sm text-forest-700 transition-colors hover:bg-forest-50"
+                              >
+                                {child.label}
+                              </Link>
+                            ))}
+                          </div>
+                        ))}
+                      </div>
+                      {item.children?.map((child) => (
+                        <Link
+                          key={child.href}
+                          href={child.href}
+                          className="mt-2 flex items-center justify-center gap-1 rounded-lg border-t border-forest-100 pt-3 text-sm font-semibold text-forest-700 transition-colors hover:text-forest-900"
+                        >
+                          {child.label} →
+                        </Link>
+                      ))}
+                    </>
+                  ) : (
+                    <div className="min-w-52">
+                      {item.children?.map((child) => (
+                        <Link
+                          key={child.href}
+                          href={child.href}
+                          className="block rounded-lg px-3 py-2 text-sm text-forest-700 transition-colors hover:bg-forest-50"
+                        >
+                          {child.label}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
                 </div>
               )}
             </div>
@@ -108,19 +142,51 @@ export function Header() {
               >
                 {item.label}
               </Link>
-              {item.children && (
-                <div className="ml-2 border-l border-forest-100 pl-3">
-                  {item.children.map((child) => (
+              {item.groups ? (
+                <div className="ml-2 space-y-2 border-l border-forest-100 pl-3">
+                  {item.children?.map((child) => (
                     <Link
                       key={child.href}
                       href={child.href}
-                      className="block rounded-md px-2 py-1.5 text-sm text-forest-600"
+                      className="block rounded-md px-2 py-1.5 text-sm font-medium text-forest-700"
                       onClick={() => setMobileOpen(false)}
                     >
                       {child.label}
                     </Link>
                   ))}
+                  {item.groups.map((grp) => (
+                    <div key={grp.label}>
+                      <p className="px-2 pb-0.5 pt-1 text-xs font-bold uppercase tracking-wide text-gold-500">
+                        {grp.label}
+                      </p>
+                      {grp.children.map((child) => (
+                        <Link
+                          key={child.href}
+                          href={child.href}
+                          className="block rounded-md px-2 py-1.5 text-sm text-forest-600"
+                          onClick={() => setMobileOpen(false)}
+                        >
+                          {child.label}
+                        </Link>
+                      ))}
+                    </div>
+                  ))}
                 </div>
+              ) : (
+                item.children && (
+                  <div className="ml-2 border-l border-forest-100 pl-3">
+                    {item.children.map((child) => (
+                      <Link
+                        key={child.href}
+                        href={child.href}
+                        className="block rounded-md px-2 py-1.5 text-sm text-forest-600"
+                        onClick={() => setMobileOpen(false)}
+                      >
+                        {child.label}
+                      </Link>
+                    ))}
+                  </div>
+                )
               )}
             </div>
           ))}

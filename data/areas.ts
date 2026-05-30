@@ -1,5 +1,6 @@
 import { gangnamGuide, suwonGuide, incheonGuide } from "./area-guides-1";
 import { yonginGuide, busanGuide, seongnamGuide } from "./area-guides-2";
+import { songpaGuide, mapoGuide } from "./area-guides-3";
 
 export interface AreaFaq {
   question: string;
@@ -87,6 +88,86 @@ export const areas: Area[] = [
     ],
     focusKeyword: "강남 출장마사지",
     guide: gangnamGuide,
+  },
+  {
+    slug: "songpa",
+    name: "송파",
+    label: "송파 출장마사지",
+    seoTitle: "송파 출장마사지 | 예약제 웰니스 홈케어 요금·지역 안내",
+    metaDescription:
+      "송파 출장마사지를 찾는 분을 위한 예약제 웰니스 홈케어 안내입니다. 가능 지역, 요금, 준비사항, 위생·안전 정책을 투명하게 확인하세요.",
+    h1: "송파 출장마사지 예약 안내",
+    intro:
+      "송파 지역은 잠실·문정·가락 등 대단지 아파트와 업무 시설이 어우러진 지역입니다. 가족 단위 고객과 직장인 고객의 문의가 고르게 많아, 아로마 릴렉스 케어와 오피스 피로 케어 예약이 많습니다. 대단지 아파트 방문이 많은 만큼 차량 등록과 단지 출입 안내를 꼼꼼히 확인합니다.",
+    arrivalTime: "예약 확인 후 평균 35~55분 내 도착 가능 (교통 상황에 따라 변동)",
+    zones: ["잠실", "문정", "가락", "방이", "석촌", "송파동", "거여·마천"],
+    buildingNotes: [
+      "대단지 아파트는 방문 차량 등록과 단지 내 주차 안내를 예약 시 확인합니다.",
+      "단지 내 동·호수와 공동현관 비밀번호를 미리 공유해 주시면 도착이 원활합니다.",
+      "야간 방문 시 경비실 출입 절차를 사전 안내드립니다.",
+    ],
+    popularServices: ["aroma-relax-care", "family-couple-care", "office-fatigue-care"],
+    travelFee: "송파 주요 생활권은 기본 출장 가능 구역입니다. 외곽 구역은 출장비가 별도 발생할 수 있으며 예약 전 고지합니다.",
+    availableHours: "운영 시간 내 예약 가능 (심야 시간은 가능 여부 확인 후 안내)",
+    faqs: [
+      {
+        question: "잠실 대단지 아파트도 방문 가능한가요?",
+        answer:
+          "방문 차량 등록과 단지 출입 규정 확인 후 가능합니다. 예약 시 동·호수와 출입 방법을 함께 알려 주세요.",
+      },
+      {
+        question: "가족이 함께 받을 수 있나요?",
+        answer:
+          "커플·가족 방문 케어로 같은 공간에서 순차 이용이 가능합니다. 인원과 공간 조건을 예약 시 확인합니다.",
+      },
+      {
+        question: "주차는 어떻게 하나요?",
+        answer:
+          "단지 또는 인근 주차 여건에 따라 주차비가 발생할 수 있으며, 예약 전 안내드립니다.",
+      },
+    ],
+    focusKeyword: "송파 출장마사지",
+    guide: songpaGuide,
+  },
+  {
+    slug: "mapo",
+    name: "마포",
+    label: "마포 출장마사지",
+    seoTitle: "마포 출장마사지 | 예약제 웰니스 홈케어 요금·지역 안내",
+    metaDescription:
+      "마포 출장마사지를 찾는 분을 위한 예약제 웰니스 홈케어 안내입니다. 가능 지역, 요금, 준비사항, 위생·안전 정책을 투명하게 확인하세요.",
+    h1: "마포 출장마사지 예약 안내",
+    intro:
+      "마포 지역은 미디어·IT 기업이 모인 상암 업무지구와 홍대·합정 생활권, 공덕 일대 주거지가 어우러진 지역입니다. 야근이 잦은 직장인과 1인 가구의 피로 관리 문의가 많아, 오피스 피로 케어와 아로마 릴렉스 케어 예약이 많습니다.",
+    arrivalTime: "예약 확인 후 평균 35~55분 내 도착 가능 (교통 상황에 따라 변동)",
+    zones: ["홍대", "합정", "상암", "공덕", "망원", "연남", "대흥"],
+    buildingNotes: [
+      "상암 업무지구 빌딩은 야간 출입 절차와 방문자 등록을 사전 확인합니다.",
+      "원룸·오피스텔이 많아 공동현관 출입 방법을 미리 안내받으면 좋습니다.",
+      "주말·심야 홍대 인근은 교통 혼잡으로 도착이 지연될 수 있습니다.",
+    ],
+    popularServices: ["office-fatigue-care", "aroma-relax-care", "sports-muscle-care"],
+    travelFee: "마포 주요 생활권은 기본 출장 가능 구역입니다. 외곽 구역은 출장비가 별도 발생할 수 있으며 예약 전 고지합니다.",
+    availableHours: "운영 시간 내 예약 가능 (심야 시간은 가능 여부 확인 후 안내)",
+    faqs: [
+      {
+        question: "상암 사무실로 방문 가능한가요?",
+        answer:
+          "독립적이고 안전한 공간이라면 가능합니다. 빌딩 야간 출입 규정과 방문자 등록 절차를 예약 시 확인합니다.",
+      },
+      {
+        question: "원룸·오피스텔도 방문하나요?",
+        answer:
+          "방문 가능합니다. 공동현관 출입 방법과 상세 주소를 예약 시 함께 알려 주세요.",
+      },
+      {
+        question: "심야에도 예약되나요?",
+        answer:
+          "운영 시간 내 가능 여부를 확인해 안내하며, 심야 추가 비용이 있을 경우 예약 전 고지합니다.",
+      },
+    ],
+    focusKeyword: "마포 출장마사지",
+    guide: mapoGuide,
   },
   {
     slug: "suwon",
