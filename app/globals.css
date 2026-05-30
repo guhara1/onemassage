@@ -91,3 +91,52 @@ body {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* 모바일 전화 연결 플로팅 버튼: 수화기 흔들림 + 펄스 링 */
+@keyframes phone-shake {
+    0%,
+    62%,
+    100% {
+        transform: rotate(0deg);
+    }
+    5%,
+    15%,
+    25%,
+    35% {
+        transform: rotate(-13deg);
+    }
+    10%,
+    20%,
+    30%,
+    40% {
+        transform: rotate(13deg);
+    }
+}
+
+@keyframes phone-ring-pulse {
+    0% {
+        transform: scale(0.85);
+        opacity: 0.65;
+    }
+    70%,
+    100% {
+        transform: scale(1.9);
+        opacity: 0;
+    }
+}
+
+.phone-fab-icon {
+    transform-origin: center;
+    animation: phone-shake 2.2s ease-in-out infinite;
+}
+
+.phone-fab-pulse {
+    animation: phone-ring-pulse 2.2s ease-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .phone-fab-icon,
+    .phone-fab-pulse {
+        animation: none;
+    }
+}
