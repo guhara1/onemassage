@@ -17,6 +17,12 @@ export const metadata: Metadata = {
   description: siteConfig.description,
   applicationName: siteConfig.name,
   formatDetection: { telephone: true },
+  verification: {
+    google: "zTBoB6ORhzmIbhnXvtC6zRX8w7R20Qs3ZpXUAB01cnI",
+    other: {
+      "naver-site-verification": "5e10f8f68d37a7c1709d39e19b74ed137e37e22a",
+    },
+  },
   alternates: {
     types: {
       "application/rss+xml": `${siteConfig.url}/rss.xml`,
