@@ -1,6 +1,22 @@
+import { gangnamGuide, suwonGuide, incheonGuide } from "./area-guides-1";
+import { yonginGuide, busanGuide, seongnamGuide } from "./area-guides-2";
+
 export interface AreaFaq {
   question: string;
   answer: string;
+}
+
+export interface AreaGuideSubsection {
+  /** H3 제목 */
+  heading: string;
+  body: string[];
+}
+
+export interface AreaGuideSection {
+  /** H2 제목 */
+  heading: string;
+  body?: string[];
+  subsections?: AreaGuideSubsection[];
 }
 
 export interface Area {
@@ -27,6 +43,8 @@ export interface Area {
   availableHours: string;
   faqs: AreaFaq[];
   focusKeyword: string;
+  /** 지역 이용 가이드 본문 (2500자 내외, H2/H3 구조) */
+  guide?: AreaGuideSection[];
 }
 
 export const areas: Area[] = [
@@ -34,9 +52,9 @@ export const areas: Area[] = [
     slug: "gangnam",
     name: "강남",
     label: "강남 출장마사지",
-    seoTitle: "강남 출장마사지 | 예약제 웰니스 홈케어",
+    seoTitle: "강남 출장마사지 | 예약제 웰니스 홈케어 요금·지역 안내",
     metaDescription:
-      "강남 출장마사지 예약 안내. 강남역·역삼·선릉·삼성·논현 등 주요 생활권 방문 가능 시간, 출장비, 준비사항, 많이 선택하는 서비스를 투명하게 안내합니다.",
+      "강남 출장마사지를 찾는 분을 위한 예약제 웰니스 홈케어 안내입니다. 가능 지역, 요금, 준비사항, 위생·안전 정책을 투명하게 확인하세요.",
     h1: "강남 출장마사지 예약 안내",
     intro:
       "강남 지역은 직장인, 출장객, 야간 업무 후 피로 관리를 원하는 고객의 예약 문의가 많은 지역입니다. 강남역, 역삼, 선릉, 삼성, 논현 등 주요 생활권을 중심으로 방문 가능 시간을 확인해 안내합니다. 이 페이지에서는 강남 지역 예약 가능 시간, 출장비, 준비사항, 많이 선택하는 서비스를 투명하게 확인할 수 있습니다.",
@@ -68,14 +86,15 @@ export const areas: Area[] = [
       },
     ],
     focusKeyword: "강남 출장마사지",
+    guide: gangnamGuide,
   },
   {
     slug: "suwon",
     name: "수원",
     label: "수원 출장마사지",
-    seoTitle: "수원 출장마사지 | 예약제 웰니스 홈케어",
+    seoTitle: "수원 출장마사지 | 예약제 웰니스 홈케어 요금·지역 안내",
     metaDescription:
-      "수원 출장마사지 예약 안내. 영통·광교·인계동·수원역 등 주거·업무 생활권 방문 가능 시간, 출장비, 준비사항, 많이 선택하는 서비스를 투명하게 안내합니다.",
+      "수원 출장마사지를 찾는 분을 위한 예약제 웰니스 홈케어 안내입니다. 가능 지역, 요금, 준비사항, 위생·안전 정책을 투명하게 확인하세요.",
     h1: "수원 출장마사지 예약 안내",
     intro:
       "수원 지역은 광교 신도시와 영통 IT 업무지구, 인계동 상권, 수원역 일대 주거지가 어우러진 지역입니다. 가족 단위 고객과 직장인 고객의 문의가 고르게 많아, 아로마 릴렉스 케어와 오피스 피로 케어 예약이 많습니다. 광교·영통 대단지 아파트 방문이 많은 만큼 출입과 주차 안내를 꼼꼼히 확인합니다.",
@@ -107,14 +126,15 @@ export const areas: Area[] = [
       },
     ],
     focusKeyword: "수원 출장마사지",
+    guide: suwonGuide,
   },
   {
     slug: "incheon",
     name: "인천",
     label: "인천 출장마사지",
-    seoTitle: "인천 출장마사지 | 예약제 웰니스 홈케어",
+    seoTitle: "인천 출장마사지 | 예약제 웰니스 홈케어 요금·지역 안내",
     metaDescription:
-      "인천 출장마사지 예약 안내. 송도·청라·구월동·부평 등 주거·업무 생활권 방문 가능 시간, 출장비, 준비사항, 많이 선택하는 서비스를 투명하게 안내합니다.",
+      "인천 출장마사지를 찾는 분을 위한 예약제 웰니스 홈케어 안내입니다. 가능 지역, 요금, 준비사항, 위생·안전 정책을 투명하게 확인하세요.",
     h1: "인천 출장마사지 예약 안내",
     intro:
       "인천 지역은 송도·청라 국제도시의 신축 대단지와 구월동·부평 상권, 공항 인근 출장객 수요가 어우러진 지역입니다. 출장 후 숙소에서 피로를 관리하려는 문의와 가족 단위 문의가 함께 많아, 스포츠 근육 케어와 아로마 릴렉스 케어 예약이 많습니다.",
@@ -146,14 +166,15 @@ export const areas: Area[] = [
       },
     ],
     focusKeyword: "인천 출장마사지",
+    guide: incheonGuide,
   },
   {
     slug: "yongin",
     name: "용인",
     label: "용인 출장마사지",
-    seoTitle: "용인 출장마사지 | 예약제 웰니스 홈케어",
+    seoTitle: "용인 출장마사지 | 예약제 웰니스 홈케어 요금·지역 안내",
     metaDescription:
-      "용인 출장마사지 예약 안내. 수지·기흥·동백·죽전 등 주거 생활권 방문 가능 시간, 출장비, 준비사항, 많이 선택하는 서비스를 투명하게 안내합니다.",
+      "용인 출장마사지를 찾는 분을 위한 예약제 웰니스 홈케어 안내입니다. 가능 지역, 요금, 준비사항, 위생·안전 정책을 투명하게 확인하세요.",
     h1: "용인 출장마사지 예약 안내",
     intro:
       "용인 지역은 수지·기흥·동백·죽전 등 대규모 주거 신도시를 중심으로 가족 단위 고객의 문의가 많은 지역입니다. 분당·강남 생활권으로 출퇴근하는 직장인의 피로 관리 문의도 꾸준해, 아로마 릴렉스 케어와 오피스 피로 케어 예약이 많습니다.",
@@ -185,14 +206,15 @@ export const areas: Area[] = [
       },
     ],
     focusKeyword: "용인 출장마사지",
+    guide: yonginGuide,
   },
   {
     slug: "busan",
     name: "부산",
     label: "부산 출장마사지",
-    seoTitle: "부산 출장마사지 | 예약제 웰니스 홈케어",
+    seoTitle: "부산 출장마사지 | 예약제 웰니스 홈케어 요금·지역 안내",
     metaDescription:
-      "부산 출장마사지 예약 안내. 해운대·서면·센텀시티·광안리 등 주거·업무·관광 생활권 방문 가능 시간, 출장비, 준비사항, 서비스를 투명하게 안내합니다.",
+      "부산 출장마사지를 찾는 분을 위한 예약제 웰니스 홈케어 안내입니다. 가능 지역, 요금, 준비사항, 위생·안전 정책을 투명하게 확인하세요.",
     h1: "부산 출장마사지 예약 안내",
     intro:
       "부산 지역은 해운대·광안리 관광 생활권과 서면·센텀시티 업무 상권이 어우러진 지역입니다. 여행·출장 중 숙소에서 피로를 관리하려는 문의와 직장인 피로 관리 문의가 함께 많아, 아로마 릴렉스 케어와 스포츠 근육 케어 예약이 많습니다.",
@@ -224,14 +246,15 @@ export const areas: Area[] = [
       },
     ],
     focusKeyword: "부산 출장마사지",
+    guide: busanGuide,
   },
   {
     slug: "seongnam",
     name: "성남",
     label: "성남 출장마사지",
-    seoTitle: "성남 출장마사지 | 예약제 웰니스 홈케어",
+    seoTitle: "성남 출장마사지 | 예약제 웰니스 홈케어 요금·지역 안내",
     metaDescription:
-      "성남 출장마사지 예약 안내. 분당·판교·정자·서현 등 주거·업무 생활권 방문 가능 시간, 출장비, 준비사항, 많이 선택하는 서비스를 투명하게 안내합니다.",
+      "성남 출장마사지를 찾는 분을 위한 예약제 웰니스 홈케어 안내입니다. 가능 지역, 요금, 준비사항, 위생·안전 정책을 투명하게 확인하세요.",
     h1: "성남 출장마사지 예약 안내",
     intro:
       "성남 지역은 판교 테크노밸리 업무지구와 분당·정자·서현 주거 생활권이 어우러진 지역입니다. IT 업계 직장인의 야간 피로 관리 문의와 가족 단위 문의가 고르게 많아, 오피스 피로 케어와 아로마 릴렉스 케어 예약이 많습니다.",
@@ -263,6 +286,7 @@ export const areas: Area[] = [
       },
     ],
     focusKeyword: "성남 출장마사지",
+    guide: seongnamGuide,
   },
 ];
 

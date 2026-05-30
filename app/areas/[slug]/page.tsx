@@ -11,7 +11,7 @@ import { areas, getArea } from "@/data/areas";
 import { getService } from "@/data/services";
 import { reviews } from "@/data/reviews";
 import { buildMetadata } from "@/lib/metadata";
-import { localBusinessSchema, serviceSchema, faqSchema } from "@/lib/schema";
+import { localBusinessSchema, serviceSchema, faqSchema, breadcrumbSchema } from "@/lib/schema";
 import { siteConfig } from "@/lib/site";
 
 export function generateStaticParams() {
@@ -52,6 +52,11 @@ export default async function AreaDetailPage({
     <>
       <JsonLd
         data={[
+          breadcrumbSchema([
+            { name: "홈", url: "/" },
+            { name: "지역안내", url: "/areas" },
+            { name: `${area.name} 출장마사지`, url: `/areas/${area.slug}` },
+          ]),
           localBusinessSchema({ areaServed: `${area.name} 일대`, url }),
           serviceSchema({
             name: `${area.name} 출장마사지`,
@@ -126,9 +131,59 @@ export default async function AreaDetailPage({
               </Card>
             </div>
 
+            {area.guide && area.guide.length > 0 && (
+              <div className="mt-10 space-y-8">
+                {area.guide.map((section) => (
+                  <section key={section.heading}>
+                    <h2 className="text-xl font-bold text-forest-900">{section.heading}</h2>
+                    {section.body?.map((p, i) => (
+                      <p key={i} className="mt-3 leading-relaxed text-forest-700">
+                        {p}
+                      </p>
+                    ))}
+                    {section.subsections?.map((sub) => (
+                      <div key={sub.heading} className="mt-4">
+                        <h3 className="text-base font-semibold text-forest-800">{sub.heading}</h3>
+                        {sub.body.map((p, i) => (
+                          <p key={i} className="mt-2 leading-relaxed text-forest-700">
+                            {p}
+                          </p>
+                        ))}
+                      </div>
+                    ))}
+                  </section>
+                ))}
+              </div>
+            )}
+
             <div className="mt-10">
               <SectionTitle title={`${area.name} 지역 FAQ`} />
               <FAQAccordion items={area.faqs} />
+            </div>
+
+            <div className="mt-8">
+              <Card>
+                <h2 className="text-base font-semibold text-forest-900">함께 확인하면 좋은 안내</h2>
+                <div className="mt-3 grid gap-2 sm:grid-cols-2">
+                  {[
+                    { href: "/pricing", label: "출장마사지 요금 안내" },
+                    { href: "/booking", label: "예약 진행 방법" },
+                    { href: "/trust/safety-hygiene", label: "위생·안전 정책" },
+                    { href: "/trust/therapist-standards", label: "테라피스트 검증 기준" },
+                    { href: "/reviews", label: "실제 고객 후기" },
+                    { href: "/services", label: "전체 서비스 보기" },
+                  ].map((l) => (
+                    <Link
+                      key={l.href}
+                      href={l.href}
+                      className="flex items-center justify-between rounded-lg border border-forest-100 px-3 py-2.5 text-sm text-forest-800 transition-colors hover:bg-forest-50"
+                    >
+                      {l.label}
+                      <span aria-hidden="true">→</span>
+                    </Link>
+                  ))}
+                </div>
+              </Card>
             </div>
           </div>
 
