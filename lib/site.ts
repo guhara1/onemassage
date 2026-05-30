@@ -18,16 +18,16 @@ export const siteConfig = {
   kakao: "https://pf.kakao.com/_onemassage",
   email: "help@onemassage.example.com",
   hours: "매일 10:00 ~ 02:00 (예약제 운영)",
-  // 사업자 정보 (실제 등록 정보로 교체하세요)
+  // 사업자 정보
   business: {
-    company: "원마사지 웰니스",
-    ceo: "홍길동",
-    registrationNumber: "000-00-00000",
-    address: "서울특별시 강남구 테헤란로 000",
-    addressLocality: "서울특별시",
-    addressRegion: "강남구",
-    postalCode: "06000",
-    privacyOfficer: "김개인",
+    company: "YH LAB",
+    ceo: "김유환",
+    registrationNumber: "815-26-00585",
+    address: "경기도 파주시 청석로 268",
+    addressLocality: "파주시",
+    addressRegion: "경기도",
+    postalCode: "10930",
+    privacyOfficer: "김유환",
   },
   social: {
     instagram: "",

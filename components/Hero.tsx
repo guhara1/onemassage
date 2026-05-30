@@ -1,4 +1,5 @@
 import { Button, Container } from "./ui";
+import { ShieldIcon, CalendarIcon, UserCheckIcon, ReceiptIcon } from "./icons";
 
 export function Hero() {
   return (
@@ -33,19 +34,17 @@ export function Hero() {
           <div className="relative">
             <div className="grid grid-cols-2 gap-4">
               {[
-                { t: "위생 관리", d: "손 소독 · 도구 관리" },
-                { t: "예약제 운영", d: "시간·지역 사전 확인" },
-                { t: "검증 기준", d: "경력·교육·안전 동의" },
-                { t: "투명 요금", d: "출장비·심야 별도 표기" },
+                { t: "위생 관리", d: "손 소독 · 도구 관리", Icon: ShieldIcon, tone: "text-mint-500 bg-mint-400/15" },
+                { t: "예약제 운영", d: "시간·지역 사전 확인", Icon: CalendarIcon, tone: "text-forest-600 bg-forest-50" },
+                { t: "검증 기준", d: "경력·교육·안전 동의", Icon: UserCheckIcon, tone: "text-gold-500 bg-gold-400/15" },
+                { t: "투명 요금", d: "출장비·심야 별도 표기", Icon: ReceiptIcon, tone: "text-forest-700 bg-sand-100" },
               ].map((c) => (
                 <div
                   key={c.t}
-                  className="rounded-2xl border border-forest-100 bg-white p-5 shadow-sm"
+                  className="rounded-2xl border border-forest-100 bg-white p-5 shadow-premium transition-transform hover:-translate-y-1"
                 >
-                  <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-xl bg-forest-50 text-forest-700">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                      <path d="M5 13l4 4L19 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
+                  <div className={`mb-3 flex h-11 w-11 items-center justify-center rounded-xl ${c.tone}`}>
+                    <c.Icon width={22} height={22} />
                   </div>
                   <p className="font-semibold text-forest-900">{c.t}</p>
                   <p className="mt-1 text-sm text-forest-500">{c.d}</p>
