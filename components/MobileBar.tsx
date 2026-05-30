@@ -1,13 +1,13 @@
 import Link from "next/link";
 import { siteConfig } from "@/lib/site";
 
-/** 모바일 하단 고정 버튼: 전화 · 카카오 상담 · 예약하기 */
+/** 모바일 하단 고정 버튼: 전화 · 예약하기 */
 export function MobileBar() {
   return (
-    <div className="fixed inset-x-0 bottom-0 z-40 grid grid-cols-3 border-t border-forest-200 bg-white shadow-[0_-2px_12px_rgba(0,0,0,0.06)] lg:hidden">
+    <div className="fixed inset-x-0 bottom-0 z-40 grid grid-cols-2 border-t border-forest-200 bg-white shadow-[0_-2px_12px_rgba(0,0,0,0.06)] lg:hidden">
       <a
         href={siteConfig.phoneHref}
-        className="flex flex-col items-center justify-center gap-0.5 py-2.5 text-xs font-medium text-forest-800"
+        className="flex flex-col items-center justify-center gap-0.5 border-r border-forest-100 py-2.5 text-xs font-medium text-forest-800"
       >
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
           <path
@@ -18,22 +18,6 @@ export function MobileBar() {
           />
         </svg>
         전화
-      </a>
-      <a
-        href={siteConfig.kakao}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="flex flex-col items-center justify-center gap-0.5 border-x border-forest-100 py-2.5 text-xs font-medium text-forest-800"
-      >
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <path
-            d="M12 4C7 4 3 7.1 3 10.9c0 2.4 1.6 4.5 4 5.7-.2.6-.7 2.3-.8 2.6 0 .2.1.4.4.3.2-.1 2.6-1.7 3.3-2.2.7.1 1.4.2 2.1.2 5 0 9-3.1 9-6.9S17 4 12 4Z"
-            stroke="currentColor"
-            strokeWidth="1.6"
-            strokeLinejoin="round"
-          />
-        </svg>
-        카카오 상담
       </a>
       <Link
         href="/booking"

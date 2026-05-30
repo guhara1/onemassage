@@ -15,7 +15,6 @@ export const siteConfig = {
   // 연락처
   phone: "0508-202-4743",
   phoneHref: "tel:0508-202-4743",
-  kakao: "https://pf.kakao.com/_onemassage",
   email: "help@onemassage.example.com",
   hours: "매일 10:00 ~ 02:00 (예약제 운영)",
   // 사업자 정보

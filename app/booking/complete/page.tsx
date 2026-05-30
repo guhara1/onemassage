@@ -23,8 +23,8 @@ export default function BookingCompletePage() {
           예약 신청이 접수되었습니다
         </h1>
         <p className="mt-4 leading-relaxed text-forest-600">
-          담당자가 가능 시간과 세부 내용을 확인한 뒤 연락드리겠습니다. 문의사항이 있으시면 전화
-          또는 카카오 상담으로 연락해 주세요.
+          담당자가 가능 시간과 세부 내용을 확인한 뒤 연락드리겠습니다. 문의사항이 있으시면 전화로
+          연락해 주세요.
         </p>
         <div className="mt-8 flex flex-wrap justify-center gap-3">
           <Button href="/">홈으로</Button>

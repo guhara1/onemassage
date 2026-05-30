@@ -118,14 +118,6 @@ export function Header() {
           >
             전화 상담
           </a>
-          <a
-            href={siteConfig.kakao}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="rounded-lg border border-forest-200 px-3 py-2 text-sm font-medium text-forest-800 transition-colors hover:bg-forest-50"
-          >
-            카카오 상담
-          </a>
           <Link
             href="/booking"
             className="rounded-lg bg-forest-700 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-forest-800"

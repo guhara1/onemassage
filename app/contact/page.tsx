@@ -7,7 +7,7 @@ import { siteConfig } from "@/lib/site";
 export const metadata: Metadata = buildMetadata({
   title: "문의하기 | 고객지원",
   description:
-    "예약 상담, 서비스 문의는 전화 또는 카카오 상담으로 연락해 주세요. 운영 시간과 고객지원 채널을 안내합니다.",
+    "예약 상담, 서비스 문의는 전화로 연락해 주세요. 운영 시간과 고객지원 채널을 안내합니다.",
   path: "/contact",
 });
 
@@ -53,9 +53,6 @@ export default function ContactPage() {
               </dl>
               <div className="mt-5 flex flex-wrap gap-3">
                 <Button href={siteConfig.phoneHref}>전화 상담</Button>
-                <Button href={siteConfig.kakao} variant="outline" external>
-                  카카오 상담
-                </Button>
                 <Button href="/booking" variant="secondary">
                   예약하기
                 </Button>
