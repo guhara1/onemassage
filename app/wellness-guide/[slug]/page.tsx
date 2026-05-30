@@ -10,9 +10,11 @@ import { JsonLd } from "@/components/JsonLd";
 import { posts, getPost } from "@/data/posts";
 import { getAuthor } from "@/data/authors";
 import { getService } from "@/data/services";
+import { getArea } from "@/data/areas";
 import { buildMetadata } from "@/lib/metadata";
 import { articleSchema, faqSchema } from "@/lib/schema";
 import { siteConfig } from "@/lib/site";
+import { getRelatedPosts, getPostAreaSlug } from "@/lib/wellness";
 
 export function generateStaticParams() {
   return posts.map((p) => ({ slug: p.slug }));
@@ -48,6 +50,9 @@ export default async function PostPage({
   const related = post.relatedServices
     .map((s) => getService(s))
     .filter((s): s is NonNullable<typeof s> => Boolean(s));
+  const relatedPosts = getRelatedPosts(post, 3);
+  const areaSlug = getPostAreaSlug(post);
+  const area = areaSlug ? getArea(areaSlug) : undefined;
 
   return (
     <>
@@ -147,10 +152,47 @@ export default async function PostPage({
           </div>
         )}
 
+        {area && (
+          <div className="mt-10">
+            <Link
+              href={`/areas/${area.slug}`}
+              className="group flex items-center justify-between gap-4 rounded-2xl border border-forest-100 bg-forest-50 px-5 py-4 transition-colors hover:bg-forest-100"
+            >
+              <div>
+                <p className="text-xs font-semibold text-forest-500">지역 안내</p>
+                <p className="mt-0.5 font-semibold text-forest-900">
+                  {area.name} 출장마사지 예약·가능 지역 보기
+                </p>
+              </div>
+              <span aria-hidden="true" className="text-forest-400 transition-transform group-hover:translate-x-0.5">→</span>
+            </Link>
+          </div>
+        )}
+
         {post.faqs.length > 0 && (
           <div className="mt-10">
             <SectionTitle title="자주 묻는 질문" />
             <FAQAccordion items={post.faqs} />
+          </div>
+        )}
+
+        {relatedPosts.length > 0 && (
+          <div className="mt-10">
+            <h2 className="text-lg font-semibold text-forest-900">이어 읽으면 좋은 글</h2>
+            <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              {relatedPosts.map((p) => (
+                <Link
+                  key={p.slug}
+                  href={`/wellness-guide/${p.slug}`}
+                  className="group flex flex-col rounded-xl border border-forest-100 bg-white p-4 transition-all hover:border-forest-300 hover:shadow-sm"
+                >
+                  <span className="text-xs font-medium text-forest-500">{p.category}</span>
+                  <span className="mt-1.5 text-sm font-semibold leading-snug text-forest-900 group-hover:text-forest-700">
+                    {p.title}
+                  </span>
+                </Link>
+              ))}
+            </div>
           </div>
         )}
 

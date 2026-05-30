@@ -24,6 +24,8 @@ import {
 import { areas, getArea } from "@/data/areas";
 import { getService } from "@/data/services";
 import { reviews } from "@/data/reviews";
+import { getAuthor } from "@/data/authors";
+import { postsForArea } from "@/lib/wellness";
 import { buildMetadata } from "@/lib/metadata";
 import { localBusinessSchema, serviceSchema, faqSchema, breadcrumbSchema } from "@/lib/schema";
 import { siteConfig } from "@/lib/site";
@@ -70,6 +72,7 @@ export default async function AreaDetailPage({
     .map((s) => getService(s))
     .filter((s): s is NonNullable<typeof s> => Boolean(s));
   const areaReviews = reviews.filter((r) => r.area === area.name);
+  const areaPosts = postsForArea(area.slug);
 
   const stats = [
     { icon: ClockIcon, label: "평균 도착", value: area.arrivalTime },
@@ -255,6 +258,47 @@ export default async function AreaDetailPage({
               <SectionTitle title={`${area.name} 지역 FAQ`} />
               <FAQAccordion items={area.faqs} />
             </div>
+
+            {/* 지역 매거진 글 (토픽 클러스터 내부 링크) */}
+            {areaPosts.length > 0 && (
+              <div className="mt-10">
+                <div className="mb-5 flex items-center gap-2">
+                  <SparkleIcon width={22} height={22} className="text-gold-500" />
+                  <h2 className="text-2xl font-bold tracking-tight text-forest-900">
+                    {area.name} 웰니스 매거진
+                  </h2>
+                </div>
+                <div className="grid gap-4 sm:grid-cols-2">
+                  {areaPosts.map((p) => {
+                    const a = getAuthor(p.author);
+                    return (
+                      <Link
+                        key={p.slug}
+                        href={`/wellness-guide/${p.slug}`}
+                        className="group flex flex-col rounded-2xl border border-forest-100 bg-white p-5 shadow-premium transition-all hover:-translate-y-0.5 hover:border-forest-300"
+                      >
+                        <span className="text-xs font-medium text-forest-500">{p.category}</span>
+                        <h3 className="mt-1.5 text-base font-bold leading-snug text-forest-900 group-hover:text-forest-700">
+                          {p.title}
+                        </h3>
+                        <p className="mt-2 flex-1 text-sm leading-relaxed text-forest-600">
+                          {p.summary}
+                        </p>
+                        <span className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-forest-700">
+                          자세히 보기
+                          <ArrowIcon
+                            width={15}
+                            height={15}
+                            className="transition-transform group-hover:translate-x-0.5"
+                          />
+                        </span>
+                        <span className="sr-only">{a?.name}</span>
+                      </Link>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
 
             {/* 내부 링크 타일 */}
             <div className="mt-8 rounded-2xl border border-forest-100 bg-gradient-to-br from-forest-50 to-white p-6 shadow-premium">

@@ -4,6 +4,7 @@
  * 크롤링·내부링크·가독성을 안정적으로 유지하기 위한 구조.
  */
 import { posts, type Post } from "@/data/posts";
+import { areas } from "@/data/areas";
 
 /** 한 페이지에 노출하는 글 수 */
 export const POSTS_PER_PAGE = 12;
@@ -95,4 +96,41 @@ export function totalPagesOf(count: number): number {
 export function pageSlice<T>(list: T[], page: number): T[] {
   const start = (page - 1) * POSTS_PER_PAGE;
   return list.slice(start, start + POSTS_PER_PAGE);
+}
+
+/**
+ * 글의 지역 매핑.
+ * 지역 매거진 글은 slug 가 지역 slug 로 시작한다(예: gangnam-office-... → gangnam).
+ * 일반 가이드 글은 지역이 없다(undefined).
+ */
+export function getPostAreaSlug(post: Post): string | undefined {
+  const area = areas.find((a) => post.slug.startsWith(`${a.slug}-`));
+  return area?.slug;
+}
+
+/** 특정 지역의 매거진 글 (지역 페이지에서 사용) */
+export function postsForArea(areaSlug: string): Post[] {
+  return sortedPosts().filter((p) => getPostAreaSlug(p) === areaSlug);
+}
+
+/**
+ * 글 상세의 "이어 읽을 관련 글" 계산.
+ * 우선순위: 같은 지역 → 같은 카테고리 순으로 채우고, 자기 자신은 제외한다.
+ */
+export function getRelatedPosts(post: Post, limit = 3): Post[] {
+  const areaSlug = getPostAreaSlug(post);
+  const pool = sortedPosts().filter((p) => p.slug !== post.slug);
+  const sameArea = areaSlug ? pool.filter((p) => getPostAreaSlug(p) === areaSlug) : [];
+  const sameCategory = pool.filter(
+    (p) => p.category === post.category && !sameArea.includes(p),
+  );
+  const seen = new Set<string>();
+  const result: Post[] = [];
+  for (const p of [...sameArea, ...sameCategory]) {
+    if (seen.has(p.slug)) continue;
+    seen.add(p.slug);
+    result.push(p);
+    if (result.length >= limit) break;
+  }
+  return result;
 }
