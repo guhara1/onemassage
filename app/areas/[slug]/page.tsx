@@ -21,6 +21,7 @@ import {
   StarIcon,
   UserCheckIcon,
 } from "@/components/icons";
+import { OtherAreaLinks } from "@/components/AreaLinks";
 import { areas, getArea } from "@/data/areas";
 import { getService } from "@/data/services";
 import { reviews } from "@/data/reviews";
@@ -89,12 +90,17 @@ export default async function AreaDetailPage({
             { name: "지역안내", url: "/areas" },
             { name: `${area.name} 출장마사지`, url: `/areas/${area.slug}` },
           ]),
-          localBusinessSchema({ areaServed: `${area.name} 일대`, url }),
+          localBusinessSchema({
+            areaServed: `${area.name} 일대`,
+            url,
+            reviews: areaReviews.length > 0 ? areaReviews : undefined,
+          }),
           serviceSchema({
             name: `${area.name} 출장마사지`,
             description: area.metaDescription,
             url,
             areaServed: `${area.name} 일대`,
+            reviews: areaReviews.length > 0 ? areaReviews : undefined,
           }),
           faqSchema(area.faqs),
         ]}
@@ -323,6 +329,9 @@ export default async function AreaDetailPage({
                 ))}
               </div>
             </div>
+
+            {/* 다른 지역 출장마사지 교차 링크 */}
+            <OtherAreaLinks currentSlug={area.slug} />
           </div>
 
           {/* ── 스티키 사이드바 ───────────────────────── */}

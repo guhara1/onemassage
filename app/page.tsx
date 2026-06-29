@@ -6,6 +6,7 @@ import { ServiceCard } from "@/components/ServiceCard";
 import { AreaCard } from "@/components/AreaCard";
 import { ReviewCard } from "@/components/ReviewCard";
 import { CTASection } from "@/components/CTASection";
+import { HomeAreaLongTailLinks } from "@/components/AreaLinks";
 import { PricingTable } from "@/components/PricingTable";
 import { Section, SectionTitle, Container, Button, Card, Notice } from "@/components/ui";
 import { JsonLd } from "@/components/JsonLd";
@@ -44,7 +45,7 @@ export default function HomePage() {
 
   return (
     <>
-      <JsonLd data={localBusinessSchema()} />
+      <JsonLd data={localBusinessSchema({ reviews })} />
       <Hero />
 
       {/* 신뢰 배지 */}
@@ -112,6 +113,15 @@ export default function HomePage() {
           <Button href="/areas" variant="outline">
             전체 지역 보기
           </Button>
+        </div>
+
+        {/* 지역 × 인기 케어 롱테일 내부링크 */}
+        <div className="mt-10">
+          <SectionTitle
+            title="지역별 인기 케어 바로가기"
+            description="찾으시는 지역과 케어를 바로 선택해 예약 안내를 확인하세요."
+          />
+          <HomeAreaLongTailLinks />
         </div>
       </Section>
 

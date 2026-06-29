@@ -3,8 +3,10 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { ReviewCard } from "@/components/ReviewCard";
 import { CTASection } from "@/components/CTASection";
 import { PageHero, Section, Container, Notice, Card } from "@/components/ui";
+import { JsonLd } from "@/components/JsonLd";
 import { reviews } from "@/data/reviews";
 import { buildMetadata } from "@/lib/metadata";
+import { localBusinessSchema, breadcrumbSchema } from "@/lib/schema";
 
 export const metadata: Metadata = buildMetadata({
   title: "실제 고객 후기 | 출장마사지 이용 후기",
@@ -24,6 +26,15 @@ const principles = [
 export default function ReviewsPage() {
   return (
     <>
+      <JsonLd
+        data={[
+          breadcrumbSchema([
+            { name: "홈", url: "/" },
+            { name: "고객 후기", url: "/reviews" },
+          ]),
+          localBusinessSchema({ reviews }),
+        ]}
+      />
       <PageHero
         eyebrow="신뢰센터"
         title="실제 고객 후기"
