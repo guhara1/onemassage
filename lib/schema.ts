@@ -1,4 +1,52 @@
 import { siteConfig } from "./site";
+import type { Review } from "@/data/reviews";
+
+/** 후기 배열의 평균 평점 (소수 첫째자리 반올림) */
+function averageRating(reviews: Review[]): number {
+  const sum = reviews.reduce((acc, r) => acc + r.rating, 0);
+  return Math.round((sum / reviews.length) * 10) / 10;
+}
+
+/** AggregateRating 구조화 데이터 — 실제 페이지에 노출되는 후기에만 사용 */
+export function aggregateRatingSchema(reviews: Review[]) {
+  return {
+    "@type": "AggregateRating",
+    ratingValue: averageRating(reviews),
+    reviewCount: reviews.length,
+    bestRating: 5,
+    worstRating: 1,
+  };
+}
+
+/** 개별 Review 구조화 데이터 — 페이지에 실제 노출되는 후기를 그대로 마크업 */
+export function reviewSchema(r: Review) {
+  return {
+    "@type": "Review",
+    author: { "@type": "Person", name: `${r.area} 이용 고객` },
+    datePublished: r.date,
+    reviewRating: {
+      "@type": "Rating",
+      ratingValue: r.rating,
+      bestRating: 5,
+      worstRating: 1,
+    },
+    reviewBody: r.content,
+    name: `${r.area} ${r.service} ${r.duration} 이용 후기`,
+  };
+}
+
+/** localBusiness/Service 등에 후기·평점을 덧붙이는 헬퍼 */
+function withReviews<T extends Record<string, unknown>>(
+  base: T,
+  reviews?: Review[],
+): T {
+  if (!reviews || reviews.length === 0) return base;
+  return {
+    ...base,
+    aggregateRating: aggregateRatingSchema(reviews),
+    review: reviews.map(reviewSchema),
+  };
+}
 
 /** Organization 구조화 데이터 */
 export function organizationSchema() {
@@ -33,8 +81,12 @@ export function websiteSchema() {
 }
 
 /** LocalBusiness 구조화 데이터 (홈/지역 페이지) */
-export function localBusinessSchema(opts?: { areaServed?: string; url?: string }) {
-  return {
+export function localBusinessSchema(opts?: {
+  areaServed?: string;
+  url?: string;
+  reviews?: Review[];
+}) {
+  const base = {
     "@context": "https://schema.org",
     "@type": "HealthAndBeautyBusiness",
     name: siteConfig.name,
@@ -54,6 +106,7 @@ export function localBusinessSchema(opts?: { areaServed?: string; url?: string }
     },
     ...(opts?.areaServed ? { areaServed: opts.areaServed } : {}),
   };
+  return withReviews(base, opts?.reviews);
 }
 
 /** Service 구조화 데이터 */
@@ -62,8 +115,9 @@ export function serviceSchema(opts: {
   description: string;
   url: string;
   areaServed?: string;
+  reviews?: Review[];
 }) {
-  return {
+  const base = {
     "@context": "https://schema.org",
     "@type": "Service",
     serviceType: opts.name,
@@ -77,6 +131,7 @@ export function serviceSchema(opts: {
     },
     ...(opts.areaServed ? { areaServed: opts.areaServed } : {}),
   };
+  return withReviews(base, opts.reviews);
 }
 
 /** BreadcrumbList 구조화 데이터 */

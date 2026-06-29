@@ -7,6 +7,7 @@ import { CTASection } from "@/components/CTASection";
 import { PageHero, Section, Container, Card, Notice, Button, SectionTitle } from "@/components/ui";
 import { JsonLd } from "@/components/JsonLd";
 import { services, getService } from "@/data/services";
+import { reviews } from "@/data/reviews";
 import { buildMetadata } from "@/lib/metadata";
 import { serviceSchema, faqSchema } from "@/lib/schema";
 import { siteConfig } from "@/lib/site";
@@ -58,6 +59,7 @@ export default async function ServiceDetailPage({
   if (!service) notFound();
 
   const url = `${siteConfig.url}/services/${service.slug}`;
+  const serviceReviews = reviews.filter((r) => r.service === service.name);
 
   return (
     <>
@@ -67,6 +69,7 @@ export default async function ServiceDetailPage({
             name: service.name,
             description: service.metaDescription,
             url,
+            reviews: serviceReviews.length > 0 ? serviceReviews : undefined,
           }),
           faqSchema(service.faqs),
         ]}

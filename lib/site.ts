@@ -9,7 +9,7 @@ export const siteConfig = {
   tagline: "전문 테라피스트가 방문하는 웰니스 마사지 홈케어",
   description:
     "검증된 전문 테라피스트가 방문하는 합법 웰니스 출장마사지. 요금·지역·위생을 투명하게 안내합니다.",
-  url: "https://1massage.club",
+  url: "https://1-massage.netlify.app",
   locale: "ko_KR",
   // 연락처
   phone: "0508-202-4743",
